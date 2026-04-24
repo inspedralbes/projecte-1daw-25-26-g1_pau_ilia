@@ -75,4 +75,4 @@ INSERT INTO actuacions (incidencia_id, data_actuacio, descripcio, temps_minuts, 
 (3, '2024-03-04 08:00:00', 'S''aprofita per reconfigurar la VLAN (Nota interna per a tècnics).', 60, FALSE);
 
 INSERT INTO actuacions (incidencia_id, data_actuacio, descripcio, temps_minuts, visible_usuari) VALUES 
-(4, '2024-03-05 11:00:00', 'Es comença la descàrrega i instal·lació del paquet ofimàtic.', 30, TRUE);
+(4, '2024-02-05 11:00:00', 'Es comença la descàrrega i instal·lació del paquet ofimàtic.', 30, TRUE);
