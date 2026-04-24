@@ -3,19 +3,21 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
-            <h1 class="display-4 mb-4 text-primary">🕹️ Gestió de Videojocs</h1>
-            <p class="lead mb-5 text-muted">Benvingut al sistema d'inventari. Què vols fer avui?</p>
-
+            <h2 class="display-5 mb-4 text-light">
+            <i class="bi bi-exclamation-triangle-fill me-3"></i>Gestio d'incidencies
+            </h2>
+            <p class="lead text-muted">Benvingut al sistema de gestio d'incidencies del Institut Pedralbes</p>
+            <p class="lead mb-5 text-muted">Què vols fer avui?</p>
             <div class="row g-4">
                 <div class="col-md-6">
-                    <div class="card h-100 shadow-sm border-0">
+                    <div class="card h-100 shadow-sm rounded-4 border-0">
                         <div class="card-body d-flex flex-column justify-content-center p-4">
                             <div class="mb-3">
-                                <i class="bi bi-controller fs-1 text-primary"></i>
+                                <i class="bi bi-exclamation-octagon-fill fs-1 text-danger"></i>
                             </div>
-                            <h5 class="card-title">Inventari</h5>
-                            <p class="card-text text-muted small">Consulta tots els jocs registrats i els seus detalls.</p>
-                            <a href="mostrar.php" class="btn btn-outline-primary mt-auto">
+                            <h5 class="card-title">Tots les incidencies</h5>
+                            <p class="card-text text-muted small">Consulta totes les incidencies y els seus detalls.</p>
+                            <a href="mostrar.php" class="btn rounded-pill btn-outline-light border-light mt-auto">
                                 <i class="bi bi-list-ul"></i> Veure llista
                             </a>
                         </div>
@@ -23,22 +25,45 @@
                 </div>
 
                 <div class="col-md-6">
-                    <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card h-100 shadow-sm border-0 rounded-4 bg-light">
                         <div class="card-body d-flex flex-column justify-content-center p-4">
                             <div class="mb-3">
-                                <i class="bi bi-plus-circle-fill fs-1 text-success"></i>
+                                <i class="bi bi-plus-circle-fill fs-1 text-warning"></i>
                             </div>
-                            <h5 class="card-title">Nou Joc</h5>
-                            <p class="card-text text-muted small">Afegeix un nou títol a la base de dades del sistema.</p>
-                            <a href="insertar.php" class="btn btn-success mt-auto shadow-sm">
-                                <i class="bi bi-plus-lg"></i> Agregar joc nou
+                            <h5 class="text-primary">Nova Incidencia</h5>
+                            <p class="card-text text-primary small">Afegeix una nova incidencia a la base de dates</p>
+                            <a href="insertar.php" class="button btn  btn-primary rounded-pill mt-auto shadow-sm">
+                                <i class="bi bi-plus-lg"></i> Agregar nova incidencia
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <hr class="mt-5 mb-4 opacity-25">
+            <hr class="mt-5 mb-2 opacity-25">
+        </div>
+    </div>
+</div>
+<div class="container mt-4 mb-5">
+    <div class="row text-center">
+        <h2 class=" text-light mb-4">Estatistica de totes les incidencies</h2>
+        <div class="col-md-4">
+            <div class="card bg-dark rounded-4 border-secondary p-2">
+                <h5 class="text-light">Overtes</h5>
+                <h2 class="text-secondary">14</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark rounded-4 border-secondary p-2">
+                <h5 class="text-light">En procés</h5>
+                <h2 class="text-warning">3</h2>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark rounded-4 border-secondary p-2">
+                <h5 class="text-light">Tancades avui</h5>
+                <h2 class="text-success">8</h2>
+            </div>
         </div>
     </div>
 </div>
