@@ -32,7 +32,7 @@
                             </div>
                             <h5 class="text-primary">Nova Incidencia</h5>
                             <p class="card-text text-primary small">Afegeix una nova incidencia a la base de dates</p>
-                            <a href="insertar.php" class="button btn  btn-primary rounded-pill mt-auto shadow-sm">
+                            <a href="formulari_incidencia.php" class="button btn  btn-primary rounded-pill mt-auto shadow-sm">
                                 <i class="bi bi-plus-lg"></i> Agregar nova incidencia
                             </a>
                         </div>

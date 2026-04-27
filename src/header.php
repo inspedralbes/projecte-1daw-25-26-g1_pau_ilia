@@ -41,7 +41,7 @@
                         </a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link btn btn-light rounded-pill btn-sm text-black ms-lg-3 p-2" href=".php">
+                        <a class="nav-link btn btn-light rounded-pill btn-sm text-black ms-lg-3 p-2" href="formulari_incidencia.php">
                             <i class="bi bi-plus-circle"></i> Afegir Incidencia
                         </a>
                     </li>
