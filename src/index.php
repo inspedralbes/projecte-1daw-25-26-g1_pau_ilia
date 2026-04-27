@@ -44,7 +44,7 @@
         </div>
     </div>
 </div>
-<div class="container mt-4 mb-5">
+<div class="container mt-4 ">
     <div class="row text-center">
         <h2 class=" text-light mb-4">Estatistica de totes les incidencies</h2>
         <div class="col-md-4">

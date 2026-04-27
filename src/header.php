@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4 py-1">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4 py-1">
         <div class="container">
             <a class="navbar-brand text-light" href="index.php">
                  Institut Pedralbes
