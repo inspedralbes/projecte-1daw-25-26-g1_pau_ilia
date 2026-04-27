@@ -17,7 +17,7 @@
                             </div>
                             <h5 class="card-title">Tots les incidencies</h5>
                             <p class="card-text text-muted small">Consulta totes les incidencies y els seus detalls.</p>
-                            <a href="mostrar.php" class="btn rounded-pill btn-outline-light border-light mt-auto">
+                            <a href="todas_incidencias.php" class="btn rounded-pill btn-outline-light border-light mt-auto">
                                 <i class="bi bi-list-ul"></i> Veure llista
                             </a>
                         </div>
