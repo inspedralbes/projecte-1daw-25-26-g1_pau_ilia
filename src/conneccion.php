@@ -1,5 +1,5 @@
 <?php
-$host = "localhost";
+$host = "db";
 $usuario = "dev_user";
 $contrasenia = "dev_password";
 $base_de_datos = "gi3p_db";

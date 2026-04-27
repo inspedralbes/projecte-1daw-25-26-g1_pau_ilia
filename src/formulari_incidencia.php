@@ -26,11 +26,11 @@
                     <label for="departaments" class="form-label fw-bold">Departament</label>
                     <select class="form-select placeholder-primary bg-light" name="departament" id="departaments" required>
                         <option value="" disabled selected>Selecciona un departament</option>
-                        <option class="placeholder-primary bg-light" value="ciencies">Ciències naturals</option>
-                        <option class="placeholder-primary bg-light" value="mates">Matemàtiques</option>
-                        <option class="placeholder-primary bg-light" value="informatica">Informàtica</option>
-                        <option class="placeholder-primary bg-light" value="leng-estr">Llengües estrangeres</option>                    
-                        <option class="placeholder-primary bg-light" value="direccio">Direcció</option>
+                        <option class="placeholder-primary bg-light" value="1">Ciencies naturals</option>
+                        <option class="placeholder-primary bg-light" value="2">Matematiques</option>
+                        <option class="placeholder-primary bg-light" value="3">Informatica</option>
+                        <option class="placeholder-primary bg-light" value="4">Llengues estrangeres</option>                    
+                        <option class="placeholder-primary bg-light" value="5">Direccio</option>
                     </select>
                 </div>
                 <div class="mb-3">

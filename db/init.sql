@@ -1,5 +1,15 @@
 USE gi3p_db;
 
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE IF EXISTS actuacions;
+DROP TABLE IF EXISTS incidencies;
+DROP TABLE IF EXISTS tipos_incidencia;
+DROP TABLE IF EXISTS tecnics;
+DROP TABLE IF EXISTS departaments;
+
+SET FOREIGN_KEY_CHECKS = 1;
+
 CREATE TABLE departaments(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL
@@ -44,11 +54,11 @@ CREATE TABLE actuacions (
 );
 
 INSERT INTO departaments (nom) VALUES 
-('Ciències naturals'),
-('Matemàtiques'),
-('Informàtica'),
-('Llengües estrangeres'),
-('Direcció');
+('Ciencies naturals'),
+('Matematiques'),
+('Informatica'),
+('Llengues estrangeres'),
+('Direccio');
 
 INSERT INTO tecnics (nom) VALUES 
 ('Joan Tècnic'),

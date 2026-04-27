@@ -1,6 +1,5 @@
-
 <?php
-$mysqli = include_once "../db/coneccion.php";
+include_once "conneccion.php";
 
 $title = $_POST["title"];
 $date = $_POST["date"];
@@ -10,7 +9,7 @@ $sentencia = $mysqli->prepare("INSERT INTO incidencies
 (title, descripcio, departament_id, data_incidencia)
 VALUES
 (?, ?, ?, ?)");
-$sentencia->bind_param("ssss", $title, $descripcion, $departament, $date);
+$sentencia->bind_param("ssis", $title, $descripcion, $departament, $date);
 $sentencia->execute();
 $id = $mysqli->insert_id; 
 
