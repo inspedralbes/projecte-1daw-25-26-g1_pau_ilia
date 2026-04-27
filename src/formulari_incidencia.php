@@ -17,15 +17,15 @@
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
             <h1 class="mb-4">Registrar Incidencia</h1>
-            <form action="insert_incidencia.php" method="POST" class="card p-4 shadow-sm">
+            <form action="insertar_incidencia.php" method="POST" class="card p-4 shadow-sm">
                 <div class="mb-3">
                     <label for="title" class="form-label fw-bold">Titulo</label>
-                    <input placeholder="Ej. Teclado no funcciona" class="form-control placeholder-primary bg-light" type="text" name="nombre" id="nombre" required>
+                    <input placeholder="Ej. Teclado no funcciona" class="form-control placeholder-primary bg-light" type="text" name="title" id="title" required>
                 </div>
                 <div class="mb-4">
                     <label for="departaments" class="form-label fw-bold">Departament</label>
                     <select class="form-select placeholder-primary bg-light" name="departament" id="departaments" required>
-                        <option value="" disabled selected>Selecciona una categoría</option>
+                        <option value="" disabled selected>Selecciona un departament</option>
                         <option class="placeholder-primary bg-light" value="ciencies">Ciències naturals</option>
                         <option class="placeholder-primary bg-light" value="mates">Matemàtiques</option>
                         <option class="placeholder-primary bg-light" value="informatica">Informàtica</option>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="date" class="form-label fw-bold">Fecha</label>
-                    <input class="form-control placeholder-primary bg-light" type="date" name="date" id="nombre" required>
+                    <input class="form-control placeholder-primary bg-light" type="date" name="date" id="date" required>
                 </div>
                 <div class="mb-4">
                     <label for="descripcion" class="form-label fw-bold">Descripción</label>
