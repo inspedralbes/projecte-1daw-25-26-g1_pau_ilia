@@ -65,7 +65,7 @@ INSERT INTO tecnics (nom) VALUES
 ('Maria Sistemes'),
 ('Pere Xarxes');
 
-INSERT INTO tipus_incidencia (nom) VALUES 
+INSERT INTO tipos_incidencia (nom) VALUES 
 ('Maquinari (Hardware)'),
 ('Programari (Software)'),
 ('Xarxa / Connexió'),
