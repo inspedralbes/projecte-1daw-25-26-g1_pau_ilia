@@ -1,7 +1,7 @@
 <?php include_once "header.php"; ?>
 <?php
 $mysqli = include_once "conneccion.php";
-$resultado = $mysqli->query("SELECT title, estado, prioritat, tecnic_id, data_incidencia FROM incidencies");
+$resultado = $mysqli->query("SELECT id, title, estado, prioritat, tecnic_id, data_incidencia FROM incidencies");
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);?>
 
 <div class="col m-4">
@@ -18,7 +18,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);?>
                     <th class="p-3">Prioritat</th>
                     <th class="p-3">Tecnic asignat</th>
                     <th class="p-3">Data creacio</th>
-                    <th class="p-3">Informacio</th>
+                    <th class="p-3 text-center">Informacio</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);?>
                             </p>
                         </td>
                         <td class="p-3"><?php echo $incidencia["tecnic_id"] ?? "No asignat"?></td>
-                        <td class="p-3"><?php echo $incidencia["data_incidencia"] ?></td>
+                        <td class="p-3 "><?php echo $incidencia["data_incidencia"] ?></td>
                         <td class="p-3"><a href="incidencia.php?id=<?php echo $incidencia["id"]?>" class="nav-link btn btn-light rounded-pill btn-sm text-black ms-lg-3 p-2">Informacio Incidencia</a></td>     
                     </tr>
                 <?php } ?>
