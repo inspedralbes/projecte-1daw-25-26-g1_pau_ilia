@@ -17,6 +17,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);?>
                     <th class="p-3">Estat</th>
                     <th class="p-3">Prioritat</th>
                     <th class="p-3">Tecnic asignat</th>
+                    <th class="p-3">Tipo</th>
                     <th class="p-3">Data creacio</th>
                     <th class="p-3 text-center">Informacio</th>
                 </tr>
@@ -42,6 +43,7 @@ $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);?>
                             </p>
                         </td>
                         <td class="p-3"><?php echo $incidencia["tecnic_id"] ?? "No asignat"?></td>
+                        <td class="p-3"><?php echo $incidencia["tipus_id"] ?? "No especificat"?></td>
                         <td class="p-3 "><?php echo $incidencia["data_incidencia"] ?></td>
                         <td class="p-3"><a href="incidencia.php?id=<?php echo $incidencia["id"]?>" class="nav-link btn btn-light rounded-pill btn-sm text-black ms-lg-3 p-2">Informacio Incidencia</a></td>     
                     </tr>
