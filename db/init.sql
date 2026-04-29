@@ -78,13 +78,13 @@ INSERT INTO incidencies (departament_id, data_incidencia, descripcio, tecnic_id,
 (4, '2024-03-04', 'Necessitem instal·lar l''Office al portàtil nou', 2, 2, 'Baixa', FALSE, NULL);
 
 INSERT INTO actuacions (incidencia_id, data_actuacio, descripcio, temps_minuts, visible_usuari) VALUES 
-(2, '2024-03-02 10:00:00', 'Es revisa el cablejat d''alimentació. El cable està trencat.', 15, TRUE),
-(2, '2024-03-02 12:30:00', 'S''ha demanat un cable nou a proveïdors. Restem a l''espera.', 10, TRUE);
+(2, '2024-03-02 10:00:00', 'Es revisa el cablejat d''alimentació. El cable està trencat.', 15, "Si"),
+(2, '2024-03-02 12:30:00', 'S''ha demanat un cable nou a proveïdors. Restem a l''espera.', 10, "Si");
 
 INSERT INTO actuacions (incidencia_id, data_actuacio, descripcio, temps_minuts, visible_usuari) VALUES 
-(3, '2024-03-03 09:15:00', 'Es reinicia el switch de la planta baixa.', 20, TRUE),
-(3, '2024-03-03 10:00:00', 'Es canvia el port del router que estava fallant.', 45, TRUE),
-(3, '2024-03-04 08:00:00', 'S''aprofita per reconfigurar la VLAN (Nota interna per a tècnics).', 60, FALSE);
+(3, '2024-03-03 09:15:00', 'Es reinicia el switch de la planta baixa.', 20, "Si"),
+(3, '2024-03-03 10:00:00', 'Es canvia el port del router que estava fallant.', 45, "Si"),
+(3, '2024-03-04 08:00:00', 'S''aprofita per reconfigurar la VLAN (Nota interna per a tècnics).', 60, "Si");
 
 INSERT INTO actuacions (incidencia_id, data_actuacio, descripcio, temps_minuts, visible_usuari) VALUES 
-(4, '2024-03-05 11:00:00', 'Es comença la descàrrega i instal·lació del paquet ofimàtic.', 30, TRUE);
+(4, '2024-03-05 11:00:00', 'Es comença la descàrrega i instal·lació del paquet ofimàtic.', 30, "Si");

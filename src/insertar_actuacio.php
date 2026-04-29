@@ -1,0 +1,49 @@
+<?php
+include_once "conneccion.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $id_inc = $_POST["id_incidencia"]; 
+
+    $sentencia = $mysqli->prepare("SELECT tecnic_id FROM incidencies WHERE id = ?");
+    $sentencia->bind_param("i", $id_inc);
+    $sentencia->execute();
+    $resultado = $sentencia->get_result();
+    $incidencia = $resultado->fetch_assoc();
+
+    if (!$incidencia) {
+        exit("Incidencia no trobada.");
+    }
+
+    $tecnic_id = $incidencia["tecnic_id"];
+
+    $descripcion = $_POST["descripcion"];
+    $isVisible = $_POST["visible_usuari"]; 
+    $temp = $_POST["temp"];
+    $date = date("Y-m-d H:i:s");
+
+    $sentencia_insrt = $mysqli->prepare("INSERT INTO actuacions
+        (incidencia_id, descripcio, data_actuacio, tecnic_id, temps_minuts, visible_usuari)
+        VALUES
+        (?, ?, ?, ?, ?, ?)");
+
+
+    $sentencia_insrt->bind_param("ississ", 
+        $id_inc,      
+        $descripcion, 
+        $date,        
+        $tecnic_id,   
+        $temp,        
+        $isVisible    
+    );
+
+    if ($sentencia_insrt->execute()) {
+        header("Location: incidencia.php?id=" . $id_inc);
+        exit;
+    } else {
+        echo "Error al insertar: " . $mysqli->error;
+    }
+} else {
+    exit("Accés no permès.");
+}
+?>

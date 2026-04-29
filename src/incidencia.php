@@ -31,7 +31,7 @@ if (!$incidencia) {
 }
 
 $sentencia_historial = $mysqli->prepare(
-    "SELECT data_actuacio, descripcio, temps_minuts 
+    "SELECT *
      FROM actuacions 
      WHERE incidencia_id = ? 
      ORDER BY data_actuacio DESC"
@@ -91,12 +91,14 @@ include_once "header.php";
                 <?php if ($historial->num_rows > 0): ?>
                     <ul class="list-group">
                         <?php while($act = $historial->fetch_assoc()): ?>
-                            <li class="list-group-item bg-dark text-light border-secondary mb-2">
-                                <small class="text-primary d-block mb-1">
-                                    <strong><?php echo $act["data_actuacio"] ?></strong> — <?php echo $act["temps_minuts"] ?> minuts
-                                </small>
-                                <p class="mb-0 text-white-50"><?php echo $act["descripcio"] ?></p>
-                            </li>
+                            <?php if($act["visible_usuari"] == "Si"): ?>
+                                <li class="list-group-item bg-dark text-light border-secondary mb-2">
+                                    <small class="text-secondary d-block mb-1">
+                                        <strong><?php echo $act["data_actuacio"] ?></strong> — <?php echo $act["temps_minuts"] ?> minuts
+                                    </small>
+                                    <p class="mb-0 text-light"><?php echo $act["descripcio"] ?></p>
+                                </li>
+                            <?php endif; ?>
                         <?php endwhile; ?>
                     </ul>
                 <?php else: ?>

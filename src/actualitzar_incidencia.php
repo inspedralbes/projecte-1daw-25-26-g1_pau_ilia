@@ -15,7 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ii", $valor, $id);
     }else if ($camp === 'tecnics'){
         $valor = $_POST['valor_tecnics'];
-        $stmt = $mysqli->prepare("UPDATE incidencies SET tecnic_id = ? WHERE id = ?");
+        $stmt_inc = $mysqli->prepare("UPDATE incidencies SET tecnic_id = ? WHERE id = ?");
+        $stmt_inc->bind_param("ii", $valor, $id);
+        $stmt_inc->execute();
+        $stmt = $mysqli->prepare("UPDATE actuacions SET tecnic_id = ? WHERE incidencia_id = ?");
         $stmt->bind_param("ii", $valor, $id);
     }
 
