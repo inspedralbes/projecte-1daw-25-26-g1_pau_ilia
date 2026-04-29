@@ -9,9 +9,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $valor = $_POST['valor_prioritat'];
         $stmt = $mysqli->prepare("UPDATE incidencies SET prioritat = ? WHERE id = ?");
         $stmt->bind_param("si", $valor, $id);
-    } else {
+    } else if ($camp === 'tipus'){
         $valor = $_POST['valor_tipus'];
         $stmt = $mysqli->prepare("UPDATE incidencies SET tipus_id = ? WHERE id = ?");
+        $stmt->bind_param("ii", $valor, $id);
+    }else if ($camp === 'tecnics'){
+        $valor = $_POST['valor_tecnics'];
+        $stmt = $mysqli->prepare("UPDATE incidencies SET tecnic_id = ? WHERE id = ?");
         $stmt->bind_param("ii", $valor, $id);
     }
 

@@ -13,6 +13,26 @@ $res_tecnics = $mysqli->query("SELECT id, nom FROM tecnics");
 $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 ?>
 
+<style>
+
+    table .asign-btn{
+        display: flex;
+    }
+
+
+    table .asign-btn .edit-btn{
+        opacity: 0;
+        transition: .3s;
+    }
+
+    table .asign-btn:hover .edit-btn{
+        opacity: 1;
+        transition: .3s;
+
+    }
+</style>
+
+
 <div class="col m-4">
     <div>
 <h1 class="text-center text-white fw-bold">Totes les incidencies</h1>
@@ -47,8 +67,13 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                             Assignar
                         </button>
                     <?php else: ?>
-                        <span class="fw-bold" style="color: <?php echo $color; ?>;">
+                        <span class="fw-bold asign-btn" style="color: <?php echo $color; ?>;">
                             <?php echo $incidencia["prioritat"]; ?>
+                            <button type="button" class="btn btn-outline-warning mx-1 btn-sm edit-btn" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#modalAssignar" 
+                                data-id="<?php echo $incidencia['id']; ?>" 
+                                data-tipus="prioritat"><i class="bi bi-pencil"></i></button>
                         </span>
                     <?php endif; ?>
                 </td>
@@ -62,27 +87,45 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                                 data-tipus="tipus">
                             Assignar
                         </button>
-                    <?php else: 
-                        foreach ($tipos_disponibles as $t) {
-                            if ($t['id'] == $incidencia['tipus_id']) echo $t['nom'];
-                        }
-                    endif; ?>
+                    <?php else: ?>
+                        <span class="fw-bold asign-btn">
+                            <?php 
+                                foreach ($tipos_disponibles as $t) {
+                                    if ($t['id'] == $incidencia['tipus_id']) echo $t['nom'];
+                                }
+                            ?>
+                            <button type="button" class="btn btn-outline-info mx-1 btn-sm edit-btn" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#modalAssignar" 
+                                data-id="<?php echo $incidencia['id']; ?>" 
+                                data-tipus="tipus"><i class="bi bi-pencil"></i></button>
+                        </span>
+                    <?php endif; ?>
                 </td>
 
                 <td class="p-3">
                     <?php if (empty($incidencia["tecnic_id"])): ?>
-                        <button type="button" class="btn btn-outline-info btn-sm" 
+                        <button type="button" class="btn btn-outline-light btn-sm" 
                                 data-bs-toggle="modal" 
                                 data-bs-target="#modalAssignar" 
                                 data-id="<?php echo $incidencia['id']; ?>" 
                                 data-tipus="tecnics">
                             Assignar
                         </button>
-                    <?php else: 
-                        foreach ($tecnics as $t) {
-                            if ($t['id'] == $incidencia['tecnic_id']) echo $t['nom'];
-                        }
-                    endif; ?>
+                    <?php else: ?>
+                        <span class="fw-bold asign-btn">
+                            <?php 
+                                foreach ($tecnics as $t) {
+                                    if ($t['id'] == $incidencia['tecnic_id']) echo $t['nom'];
+                                }
+                            ?>
+                            <button type="button" class="btn btn-outline-light mx-1 btn-sm edit-btn" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#modalAssignar" 
+                                data-id="<?php echo $incidencia['id']; ?>" 
+                                data-tipus="tecnics"><i class="bi bi-pencil"></i></button>
+                        </span>
+                    <?php endif; ?>
                 </td>
 
                 <td class="p-3"><?php echo $incidencia["data_incidencia"] ?></td>
