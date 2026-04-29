@@ -20,6 +20,9 @@ $sentencia = $mysqli->prepare(
      WHERE i.id = ?"
 );
 
+
+
+
 $sentencia->bind_param("i", $id);
 $sentencia->execute();
 $resultado = $sentencia->get_result();
@@ -39,6 +42,17 @@ $sentencia_historial = $mysqli->prepare(
 $sentencia_historial->bind_param("i", $id);
 $sentencia_historial->execute();
 $historial = $sentencia_historial->get_result();
+
+
+$sentencia_tipus = $mysqli->prepare(
+    "SELECT *
+     FROM tipos_incidencia 
+     WHERE id = ? "
+);
+$sentencia_tipus->bind_param("i", $incidencia["tipus_id"]);
+$sentencia_tipus->execute();
+$res = $sentencia_tipus->get_result();
+$tipo = $res->fetch_assoc();
 
 
 include_once "header.php"; 
@@ -75,6 +89,9 @@ include_once "header.php";
 
                 <h4><strong>Tècnic</strong></h4>
                 <p class="medium"><?php echo $incidencia["tecnic_nom"] ?? "No assignat"; ?></p>
+
+                <h4><strong>Tipo</strong></h4>
+                <p class="medium"><?php echo $tipo["nom"] ?? "No assignat"; ?></p>
 
                 <h4><strong>Ultima actualitzacio</strong></h4>
                 <p class="medium"><?php echo $incidencia["ultima_actuacio_data"] ?? "Sense actualitzacions"; ?></p>

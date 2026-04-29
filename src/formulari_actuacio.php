@@ -62,10 +62,17 @@ include_once "header.php";
                     <label class="form-check-label fw-bold" for="visible_usuari">Visible per l'usuari</label>
                 </div>
 
-                <div class="mb-2">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="bi bi-save me-2"></i>Registrar Actuació
-                    </button>
+                <div class="row col-md-12">
+                    <div class="mb-2 col-6">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-save me-2"></i>Registrar Actuació
+                        </button>
+                    </div>
+                    <div class="mb-2 col-6">
+                        <a href="ticket_cerrado.php?id=<?php echo $id?>" class="btn btn-secondary w-100">
+                            <i class="bi bi-x me-2 fs-6"></i>Tancar Incidencia
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>
