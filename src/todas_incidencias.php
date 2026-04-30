@@ -35,7 +35,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 
 <div class="col m-4">
     <div>
-        <h1 class="text-center text-white fw-bold">Totes les incidencies</h1>
+        <h1 class="text-center text-white fw-bold">Totes les incidències</h1>
         <br>
     </div>
 
@@ -45,7 +45,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                 <th class="p-3">Titul</th>
                 <th class="p-3">Estat</th>
                 <th class="p-3">Prioritat</th>
-                <th class="p-3">Tipo</th>
+                <th class="p-3">Tipus</th>
                 <th class="p-3">Tècnic</th>
                 <th class="p-3">Data</th>
                 <th class="p-3">Informació</th>
@@ -184,7 +184,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
           </div>
 
           <div id="selector_tecnics" class="d-none">
-            <label class="form-label">Tria el Tecnic:</label>
+            <label class="form-label">Tria el Tècnic:</label>
             <select name="valor_tecnics" class="form-select">
                 <?php foreach ($tecnics as $t): ?>
                     <option value="<?php echo $t['id']; ?>"><?php echo $t['nom']; ?></option>

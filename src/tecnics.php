@@ -86,7 +86,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 
 <div class="col m-4">
     <div>
-<h1 class="text-center text-white fw-bold">Totes les incidencies</h1>
+<h1 class="text-center text-white fw-bold">Afegir totes les Incidències </h1>
 <br>
 </div>
 
@@ -94,10 +94,10 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
     <thead>
         <tr class="align-middle">
             <th class="p-3">Nom</th>
-            <th class="p-3">Incidencias Asignadas</th>
-            <th class="p-3">Incidencias Cerradas</th>
-            <th class="p-3">Tiempo Promedio de Actuacio</th>
-            <th class="p-3">Llista de incidencias</th>
+            <th class="p-3">Incidències Assignades</th>
+            <th class="p-3">Incidèncias Tancadas</th>
+            <th class="p-3">Temps mitjà d'actuació</th>
+            <th class="p-3">Llista de incidències</th>
         </tr>
     </thead>
     <tbody>
@@ -122,7 +122,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 
                 <td class="p-3">
                     <a href="incidencia.php?id=<?php ?>" class="btn btn-light rounded-pill btn-sm text-black">
-                        Ver Incidencias
+                        Veure Incidències
                     </a>
                 </td>     
             </tr>

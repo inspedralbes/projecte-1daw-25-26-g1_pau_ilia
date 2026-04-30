@@ -4,9 +4,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
             <h2 class="display-5 mb-4 text-light">
-            <i class="bi bi-exclamation-triangle-fill me-3"></i>Gestio d'incidencies
+            <i class="bi bi-exclamation-triangle-fill me-3"></i>Gestió d'incidències
             </h2>
-            <p class="lead text-muted">Benvingut al sistema de gestio d'incidencies del Institut Pedralbes</p>
+            <p class="lead text-muted">Benvingut al sistema de gestió d'incidències del Institut Pedralbes</p>
             <p class="lead mb-5 text-muted">Què vols fer avui?</p>
             <div class="row g-4">
                 <div class="col-md-6">
@@ -15,8 +15,8 @@
                             <div class="mb-3">
                                 <i class="bi bi-exclamation-octagon-fill fs-1 text-danger"></i>
                             </div>
-                            <h5 class="card-title">Tots les incidencies</h5>
-                            <p class="card-text text-muted small">Consulta totes les incidencies y els seus detalls.</p>
+                            <h5 class="card-title">Tots les incidències</h5>
+                            <p class="card-text text-muted small">Consulta totes les incidències y els seus detalls.</p>
                             <a href="todas_incidencias.php" class="btn rounded-pill btn-outline-light border-light mt-auto">
                                 <i class="bi bi-list-ul"></i> Veure llista
                             </a>
@@ -30,10 +30,10 @@
                             <div class="mb-3">
                                 <i class="bi bi-plus-circle-fill fs-1 text-warning"></i>
                             </div>
-                            <h5 class="text-primary">Nova Incidencia</h5>
-                            <p class="card-text text-primary small">Afegeix una nova incidencia a la base de dates</p>
+                            <h5 class="text-primary">Nova Incidència</h5>
+                            <p class="card-text text-primary small">Afegeix una nova incidència a la base de dates</p>
                             <a href="formulari_incidencia.php" class="button btn  btn-primary rounded-pill mt-auto shadow-sm">
-                                <i class="bi bi-plus-lg"></i> Agregar nova incidencia
+                                <i class="bi bi-plus-lg"></i> Agregar nova incidència
                             </a>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
 </div>
 <div class="container mt-4 ">
     <div class="row text-center">
-        <h2 class=" text-light mb-4">Estatistica de totes les incidencies</h2>
+        <h2 class=" text-light mb-4">Estàtica de totes les incidències</h2>
         <div class="col-md-4">
             <div class="card bg-dark rounded-4 border-secondary p-2">
                 <h5 class="text-light">Registrats</h5>

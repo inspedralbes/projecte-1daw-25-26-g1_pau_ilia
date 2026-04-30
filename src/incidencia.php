@@ -24,8 +24,8 @@ include_once "header.php";
 ?>
 
 <div class="container-fluid p-3">
-    <a href="todas_incidencias.php" class="btn btn-secondary mb-1">Volver</a>
-    <h1 class="mb-2">Detalls de l'incidencia <strong>#<?php echo $incidencia["id"]?></strong></h1>
+    <a href="todas_incidencias.php" class="btn btn-secondary mb-1">Tornar</a>
+    <h1 class="mb-2">Detalls de la incidència <strong>#<?php echo $incidencia["id"]?></strong></h1>
     
     <form action="actualitzar_incidencia.php" method="POST">
         <input type="hidden" name="id_incidencia" value="<?php echo $incidencia['id']; ?>">
@@ -59,7 +59,7 @@ include_once "header.php";
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <h4><strong>Tipo</strong></h4>
+                    <h4><strong>Tipus</strong></h4>
                     <select name="valor_tipus" class="form-select bg-dark text-white border-secondary mb-3">
                         <option value="">No assignat</option>
                         <?php foreach ($tipos_disponibles as $t): ?>
@@ -70,15 +70,15 @@ include_once "header.php";
                     </select>
                     <div class="row">
                             <div class="col-6">
-                                <h4><strong>Fecha creació</strong></h4>
+                                <h4><strong>Data creació</strong></h4>
                                 <p class="medium"><?php echo $incidencia["data_incidencia"]?></p>
                             </div>
                             <div class="col-6">
-                                <h4><strong>Fecha de Finalitzacio</strong></h4>
+                                <h4><strong>Data de Finalització</strong></h4>
                                 <p class="medium"><?php echo $incidencia["data_finalitzacio"] ?? "Aquesta incidencia esta en proceso"?></p>
                             </div>
                     </div>                
-                    <h4><strong>Ultima actualitzacio</strong></h4>
+                    <h4><strong>Ultima actualització</strong></h4>
                     <p class="medium"><?php echo $incidencia["ultima_actuacio_data"] ?? "Sense actualitzacions"; ?></p>
 
                     <div class="mt-4 d-flex gap-2">

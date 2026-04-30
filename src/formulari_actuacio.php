@@ -41,7 +41,7 @@ include_once "header.php";
     <a href="/incidencia.php?id=<?php echo $id?>"  class="btn btn-secondary mb-1"><i class="bi bi-arrow-bar-left mx-1"></i>Volver</a>
     <div class="row">
         <div class="col-12 col-md-8 offset-md-2">
-            <h1 class="mb-4">Registrar Actuacio</h1>
+            <h1 class="mb-4">Registrar Actuació</h1>
             <form action="insertar_actuacio.php" method="POST" class="card p-4 shadow-sm">
                 <input type="hidden" name="id_incidencia" value="<?php echo $id; ?>">
 
@@ -70,7 +70,7 @@ include_once "header.php";
                     </div>
                     <div class="mb-2 col-6">
                         <a href="cerrar_incidencia.php?id=<?php echo $id?>" class="btn btn-secondary w-100">
-                            <i class="bi bi-x me-2 fs-6"></i>Tancar Incidencia
+                            <i class="bi bi-x me-2 fs-6"></i>Tancar Incidència
                         </a>
                     </div>
                 </div>

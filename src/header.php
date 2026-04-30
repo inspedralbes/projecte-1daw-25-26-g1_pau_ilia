@@ -43,12 +43,12 @@
                     </li>
                     <li class="nav-item mx-1">
                         <a class="nav-link text-warning" href="todas_incidencias.php">
-                            <i class="bi bi-exclamation-triangle-fill"></i> Incidencies
+                            <i class="bi bi-exclamation-triangle-fill"></i> Incidències
                         </a>
                     </li>
                     <li class="nav-item d-flex align-items-center">
                         <a class="nav-link btn btn-light rounded-pill btn-sm text-black ms-lg-3 p-2" href="formulari_incidencia.php">
-                            <i class="bi bi-plus-circle"></i> Afegir Incidencia
+                            <i class="bi bi-plus-circle"></i> Afegir Incidència
                         </a>
                     </li>
                 </ul>

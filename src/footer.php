@@ -9,11 +9,11 @@
     <footer class="footer mt-auto py-3 bg-primary shadow-sm">
         <div class="container text-center">
             <span class="text-light small">
-                © <?php echo date('Y'); ?> <strong>Projecte DAW1 G1</strong> | Desarrollado por 
+                © <?php echo date('Y'); ?> <strong>Projecte DAW1 G1</strong> | Desenvolupat per 
                 <a href="https://parzibyte.me/blog/" class="text-decoration-none text-light fw-bold">Pau i Ilia</a>
                 <span class="mx-2 text-light">|</span>
                 <a target="_blank" class="text-light" href="https://github.com/inspedralbes/projecte-1daw-25-26-g1_pau_ilia.git">
-                    <i class="bi bi-github"></i> Código Fuente
+                    <i class="bi bi-github"></i> Codi Font
                 </a>
             </span>
         </div>
