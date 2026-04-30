@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $id_inc = $_POST["id_incidencia"]; 
 
-    $sentencia = $mysqli->prepare("SELECT tecnic_id FROM incidencies WHERE id = ?");
+    $sentencia = $mysqli->prepare("SELECT tecnic_id, estado FROM incidencies WHERE id = ?");
     $sentencia->bind_param("i", $id_inc);
     $sentencia->execute();
     $resultado = $sentencia->get_result();
@@ -36,6 +36,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $temp,        
         $isVisible    
     );
+
+
+    if($incidencia["estado"] == "Registrat"){
+        $valor_estat = "En Proces";
+        $stmt = $mysqli->prepare("UPDATE incidencies SET estado = ? WHERE id = ?");
+        $stmt->bind_param("si", $valor_estat, $id_inc);
+        $stmt->execute();
+    }
+
+
 
     if ($sentencia_insrt->execute()) {
         header("Location: incidencia.php?id=" . $id_inc);
