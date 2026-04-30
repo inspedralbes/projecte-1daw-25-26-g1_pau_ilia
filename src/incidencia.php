@@ -68,9 +68,16 @@ include_once "header.php";
                             </option>
                         <?php endforeach; ?>
                     </select>
-                    <h4><strong>Fecha creació</strong></h4>
-                    <p class="medium"><?php echo $incidencia["data_incidencia"]?></p>
-
+                    <div class="row">
+                            <div class="col-6">
+                                <h4><strong>Fecha creació</strong></h4>
+                                <p class="medium"><?php echo $incidencia["data_incidencia"]?></p>
+                            </div>
+                            <div class="col-6">
+                                <h4><strong>Fecha de Finalitzacio</strong></h4>
+                                <p class="medium"><?php echo $incidencia["data_finalitzacio"] ?? "Aquesta incidencia esta en proceso"?></p>
+                            </div>
+                    </div>                
                     <h4><strong>Ultima actualitzacio</strong></h4>
                     <p class="medium"><?php echo $incidencia["ultima_actuacio_data"] ?? "Sense actualitzacions"; ?></p>
 

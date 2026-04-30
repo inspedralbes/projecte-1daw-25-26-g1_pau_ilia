@@ -49,7 +49,7 @@
         <h2 class=" text-light mb-4">Estatistica de totes les incidencies</h2>
         <div class="col-md-4">
             <div class="card bg-dark rounded-4 border-secondary p-2">
-                <h5 class="text-light">Overtes</h5>
+                <h5 class="text-light">Registrats</h5>
                 <h2 class="text-secondary">14</h2>
             </div>
         </div>
@@ -61,7 +61,7 @@
         </div>
         <div class="col-md-4">
             <div class="card bg-dark rounded-4 border-secondary p-2">
-                <h5 class="text-light">Tancades avui</h5>
+                <h5 class="text-light">Tancades</h5>
                 <h2 class="text-success">8</h2>
             </div>
         </div>

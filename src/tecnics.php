@@ -29,15 +29,34 @@ function countIncidenciasFinalizadas($mysqli, $id_tecnic) {
 
 
 function countAvgTime($mysqli, $id_tecnic) {
-    // $sentencia = $mysqli->prepare("");    
-    // $sentencia->bind_param("i", $id_tecnic);
-    // $sentencia->execute(); 
-    // $resultado = $sentencia->get_result();
-    // $data = $resultado->fetch_assoc();
+    $query = "SELECT AVG(CAST(temps_minuts AS UNSIGNED)) AS mitjana 
+              FROM actuacions 
+              WHERE tecnic_id = ?";
+    $sentencia = $mysqli->prepare($query);
+    if (!$sentencia) {
+        return 0; 
+    }
+    $sentencia->bind_param("i", $id_tecnic);
+    $sentencia->execute();
     
-    // return $data['total'];
+    $resultat = $sentencia->get_result();
+    $row = $resultat->fetch_assoc();
+    
+    $sentencia->close();
+    return $row['mitjana'] ?? 0;
+}
 
-    //TODO: acabar la funccion
+function formatMinutes($total_minutes) {
+    if (!$total_minutes || $total_minutes <= 0) {
+        return "-";
+    }
+    $total = (int)round((float)$total_minutes);
+    $hours = floor($total / 60);
+    $minutes = $total % 60;
+    if ($hours > 0) {
+        return $hours . "h " . ($minutes > 0 ? $minutes . " min" : "");
+    }
+    return $minutes . " min";
 }
 
 
@@ -71,13 +90,13 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 <br>
 </div>
 
-<table class="table rounded-4">
+<table class="table rounded-4 text-center">
     <thead>
         <tr class="align-middle">
             <th class="p-3">Nom</th>
             <th class="p-3">Incidencias Asignadas</th>
             <th class="p-3">Incidencias Cerradas</th>
-            <th class="p-3">Tiempo Promedio Cierre</th>
+            <th class="p-3">Tiempo Promedio de Actuacio</th>
             <th class="p-3">Llista de incidencias</th>
         </tr>
     </thead>
@@ -93,7 +112,10 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                 </td>  
 
                 <td class="p-3">
-
+                    <?php 
+                        $avg_raw = countAvgTime($mysqli, $t["id"]); 
+                        echo formatMinutes($avg_raw); 
+                    ?>
                 </td>
 
 
