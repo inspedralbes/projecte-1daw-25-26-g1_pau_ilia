@@ -37,7 +37,7 @@
                         </button>
                     </li>
                     <li class="nav-item mx-1">
-                        <a class="nav-link text-light" href="mostrar.php">
+                        <a class="nav-link text-light" href="tecnics.php">
                             <i class="bi bi-tools"></i> Tecnics
                         </a>
                     </li>
