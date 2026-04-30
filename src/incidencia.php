@@ -34,10 +34,8 @@ include_once "header.php";
                 <div class="card bg-dark text-light p-3 border-secondary">
                     <h3>Informació General</h3>
                     <hr class="border-secondary">
-
                     <h4><strong>Títol</strong></h4>
                     <p class="medium"><?php echo $incidencia["title"]?></p>
-
                     <div class="row">
                         <div class="col-6">
                             <h4><strong>Estat</strong></h4>
@@ -52,7 +50,6 @@ include_once "header.php";
                             </select>
                         </div>
                     </div>
-
                     <h4><strong>Tècnic</strong></h4>
                     <select name="valor_tecnics" class="form-select bg-dark text-white border-secondary mb-3">
                         <option value="">No assignat</option>
@@ -62,7 +59,6 @@ include_once "header.php";
                             </option>
                         <?php endforeach; ?>
                     </select>
-
                     <h4><strong>Tipo</strong></h4>
                     <select name="valor_tipus" class="form-select bg-dark text-white border-secondary mb-3">
                         <option value="">No assignat</option>
@@ -72,7 +68,6 @@ include_once "header.php";
                             </option>
                         <?php endforeach; ?>
                     </select>
-
                     <h4><strong>Fecha creació</strong></h4>
                     <p class="medium"><?php echo $incidencia["data_incidencia"]?></p>
 
@@ -88,7 +83,25 @@ include_once "header.php";
 
             <div class="col-md-6 border-start border-secondary">
                 <h3 class="ms-3">Historial d'actuacions</h3>
+                <div class="p-3">
+                    <?php if ($historial->num_rows > 0): ?>
+                    <ul class="list-group">
+                        <?php while($act = $historial->fetch_assoc()): ?>
+                        <?php if($act["visible_usuari"] == "Si"): ?>
+                        <li class="list-group-item bg-dark text-light border-secondary mb-2">
+                            <small class="text-secondary d-block mb-1">
+                                <strong><?php echo $act["data_actuacio"] ?></strong> — <?php echo $act["temps_minuts"] ?> minuts
+                            </small>
+                            <p class="mb-0 text-light"><?php echo $act["descripcio"] ?></p>
+                        </li>
+                        <?php endif; ?>
+                        <?php endwhile; ?>
+                    </ul>
+                    <?php else: ?>
+                    <p class="text-muted fst-italic">No hi ha actuacions registrades.</p>
+                    <?php endif; ?>
                 </div>
+            </div>
         </div> 
     </form>
 </div>

@@ -69,7 +69,7 @@ include_once "header.php";
                         </button>
                     </div>
                     <div class="mb-2 col-6">
-                        <a href="ticket_cerrado.php?id=<?php echo $id?>" class="btn btn-secondary w-100">
+                        <a href="cerrar_incidencia.php?id=<?php echo $id?>" class="btn btn-secondary w-100">
                             <i class="bi bi-x me-2 fs-6"></i>Tancar Incidencia
                         </a>
                     </div>
