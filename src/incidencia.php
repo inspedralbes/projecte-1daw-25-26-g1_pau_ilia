@@ -15,7 +15,7 @@ $tipos_disponibles = $res_tipos->fetch_all(MYSQLI_ASSOC);
 $res_tecnics = $mysqli->query("SELECT id, nom FROM tecnics");
 $tecnics_disponibles = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 
-$sentencia_historial = $mysqli->prepare("SELECT * FROM actuacions WHERE incidencia_id = ? ORDER BY data_actuacio DESC");
+$sentencia_historial = $mysqli->prepare("SELECT * FROM actuacions WHERE incidencia_id = ? AND visible_usuari = 'Si' ORDER BY data_actuacio DESC LIMIT 5");
 $sentencia_historial->bind_param("i", $id);
 $sentencia_historial->execute();
 $historial = $sentencia_historial->get_result();
@@ -88,25 +88,27 @@ include_once "header.php";
                 </div>
             </div>
 
-            <div class="col-md-6 border-start border-secondary">
+            <div class="col-md-6 border-start border-secondary d-flex flex-column align-content-end justify-content-start">
                 <h3 class="ms-3">Historial d'actuacions</h3>
                 <div class="p-3">
                     <?php if ($historial->num_rows > 0): ?>
                     <ul class="list-group">
                         <?php while($act = $historial->fetch_assoc()): ?>
-                        <?php if($act["visible_usuari"] == "Si"): ?>
                         <li class="list-group-item bg-dark text-light border-secondary mb-2">
                             <small class="text-secondary d-block mb-1">
                                 <strong><?php echo $act["data_actuacio"] ?></strong> — <?php echo $act["temps_minuts"] ?> minuts
                             </small>
                             <p class="mb-0 text-light"><?php echo $act["descripcio"] ?></p>
                         </li>
-                        <?php endif; ?>
                         <?php endwhile; ?>
                     </ul>
                     <?php else: ?>
                     <p class="text-muted fst-italic">No hi ha actuacions registrades.</p>
                     <?php endif; ?>
+                </div>
+                
+                <div class="p-3 text-end">
+                    <a href="actuaciones.php?id=<?php echo $incidencia["id"]?>" class="btn btn-secondary mb-1">Ver Todas</a>
                 </div>
             </div>
         </div> 
