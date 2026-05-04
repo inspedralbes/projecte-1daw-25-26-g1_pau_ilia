@@ -33,7 +33,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
     }
 </style>
 
-<div class="col m-4">
+<div class="col m-4 table-responsive">
     <div>
         <h1 class="text-center text-white fw-bold">Totes les incidències</h1>
         <br>

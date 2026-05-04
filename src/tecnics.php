@@ -121,7 +121,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 
 
                 <td class="p-3">
-                    <a href="incidencia.php?id=<?php ?>" class="btn btn-light rounded-pill btn-sm text-black">
+                    <a href="incidencias_por_tecnic.php?id=<?php echo $t["id"]?>" class="btn btn-light rounded-pill btn-sm text-black">
                         Veure Incidències
                     </a>
                 </td>     

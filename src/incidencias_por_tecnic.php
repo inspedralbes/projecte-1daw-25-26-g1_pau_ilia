@@ -2,15 +2,27 @@
 include_once "header.php";
 $mysqli = include_once "conneccion.php";
 
-$resultado = $mysqli->query("SELECT id, title, estado, prioritat, tecnic_id, tipus_id, data_incidencia
-FROM incidencies");
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    die("<div class='alert alert-danger m-4'>Error: No s'ha especificat un tècnic vàlid.</div>");
+}
+$id_tecnic = $_GET['id'];
+
+$stmt_nom = $mysqli->prepare("SELECT nom FROM tecnics WHERE id = ?");
+$stmt_nom->bind_param("i", $id_tecnic);
+$stmt_nom->execute();
+$res_nom = $stmt_nom->get_result();
+$tecnic_actual = $res_nom->fetch_assoc();
+$nom_del_tecnic = $tecnic_actual ? $tecnic_actual['nom'] : "Desconegut";
+
+$stmt_incidencias = $mysqli->prepare("SELECT id, title, estado, prioritat, tipus_id, data_incidencia 
+                                      FROM incidencies WHERE tecnic_id = ?");
+$stmt_incidencias->bind_param("i", $id_tecnic);
+$stmt_incidencias->execute();
+$resultado = $stmt_incidencias->get_result();
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
 
 $res_tipos = $mysqli->query("SELECT id, nom FROM tipos_incidencia");
 $tipos_disponibles = $res_tipos->fetch_all(MYSQLI_ASSOC);
-
-$res_tecnics = $mysqli->query("SELECT id, nom FROM tecnics");
-$tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <style>
@@ -35,18 +47,18 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 
 <div class="col m-4">
     <div>
-        <h1 class="text-center text-white fw-bold">Totes les incidencies</h1>
+        <h1 class="text-center text-white fw-bold">Incidències assignades a: <?php echo htmlspecialchars($nom_del_tecnic); ?></h1>
         <br>
     </div>
 
     <table class="table rounded-4">
         <thead>
             <tr class="align-middle">
-                <th class="p-3">Titul</th>
+                <th class="p-3">ID</th> 
+                <th class="p-3">Títol</th>
                 <th class="p-3">Estat</th>
                 <th class="p-3">Prioritat</th>
-                <th class="p-3">Tipo</th>
-                <th class="p-3">Tècnic</th>
+                <th class="p-3">Tipus</th>
                 <th class="p-3">Data</th>
                 <th class="p-3">Informació</th>
             </tr>
@@ -67,6 +79,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                 }
             ?>
                 <tr class="align-middle" style="<?php echo !empty($bg_color) ? 'background-color: ' . $bg_color . ' !important;' : ''; ?>">
+                    <td class="p-3 fw-bold">#<?php echo $incidencia["id"] ?></td>
                     <td class="p-3"><?php echo $incidencia["title"] ?></td>
                     <td class="p-3"><?php echo $incidencia["estado"] ?></td>
                     
@@ -116,31 +129,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                         <?php endif; ?>
                     </td>
 
-                    <td class="p-3">
-                        <?php if (empty($incidencia["tecnic_id"])): ?>
-                            <button type="button" class="btn btn-outline-light btn-sm" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#modalAssignar" 
-                                    data-id="<?php echo $incidencia['id']; ?>" 
-                                    data-tipus="tecnics">
-                                Assignar
-                            </button>
-                        <?php else: ?>
-                            <span class="fw-bold asign-btn">
-                                <?php 
-                                    foreach ($tecnics as $t) {
-                                        if ($t['id'] == $incidencia['tecnic_id']) echo $t['nom'];
-                                    }
-                                ?>
-                                <button type="button" class="btn btn-outline-light mx-1 btn-sm edit-btn" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#modalAssignar" 
-                                    data-id="<?php echo $incidencia['id']; ?>" 
-                                    data-tipus="tecnics"><i class="bi bi-pencil"></i></button>
-                            </span>
-                        <?php endif; ?>
-                    </td>
-
                     <td class="p-3"><?php echo $incidencia["data_incidencia"] ?></td>
                     <td class="p-3">
                         <a href="incidencia.php?id=<?php echo $incidencia["id"]?>" class="btn btn-light rounded-pill btn-sm text-black">
@@ -151,6 +139,8 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
             <?php } ?>
         </tbody>
     </table>
+    
+    <a href="javascript:history.back()" class="btn btn-outline-light mt-3">Tornar a Tècnics</a>
 </div>
 
 <div class="modal fade" id="modalAssignar" tabindex="-1" aria-hidden="true">
@@ -182,16 +172,8 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                 <?php endforeach; ?>
             </select>
           </div>
-
-          <div id="selector_tecnics" class="d-none">
-            <label class="form-label">Tria el Tecnic:</label>
-            <select name="valor_tecnics" class="form-select">
-                <?php foreach ($tecnics as $t): ?>
-                    <option value="<?php echo $t['id']; ?>"><?php echo $t['nom']; ?></option>
-                <?php endforeach; ?>
-            </select>
+          
           </div>
-        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tancar</button>
           <button type="submit" class="btn btn-primary">Guardar canvis</button>
@@ -213,16 +195,10 @@ modalAssignar.addEventListener('show.bs.modal', event => {
 
   if(tipus === 'prioritat') {
     document.getElementById('selector_prioritat').classList.remove('d-none');
-    document.getElementById('selector_tecnics').classList.add('d-none');
     document.getElementById('selector_tipus').classList.add('d-none');
   } else if (tipus === 'tipus'){
     document.getElementById('selector_tipus').classList.remove('d-none');
     document.getElementById('selector_prioritat').classList.add('d-none');
-    document.getElementById('selector_tecnics').classList.add('d-none');
-  }else{
-    document.getElementById('selector_tecnics').classList.remove('d-none');
-    document.getElementById('selector_prioritat').classList.add('d-none');
-    document.getElementById('selector_tipus').classList.add('d-none');
   }
 });
 </script>
