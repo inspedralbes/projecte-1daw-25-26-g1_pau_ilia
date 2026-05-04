@@ -81,37 +81,60 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
         transition: .3s;
 
     }
+
+    .custom-font-size {
+        font-size: 20px; 
+    }
+
+    @media (min-width: 768px) {
+        .custom-font-size {
+            font-size: 28px; 
+        }
+    }
+
+    .custom-font-size-table {
+        font-size: 14px; 
+    }
+
+    @media (min-width: 768px) {
+        .custom-font-size-table {
+            font-size: 18px; 
+        }
+    }
+
 </style>
 
 
-<div class="col m-4">
-    <div>
-<h1 class="text-center text-white fw-bold">Afegir totes les Incidències </h1>
-<br>
-</div>
 
-<table class="table rounded-4 text-center">
+<div class="col m-4 table-responsive">
+    <div class="d-flex justify-content-between text-center align-items-center mb-4">
+        <a href="/" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Volver</a>
+        <h1 class="text-center text-white custom-font-size fw-bold">Informe de les incidencies per tecnic</h1>
+        <br>
+    </div>
+
+<table class="table custom-font-size-table rounded-4 text-center">
     <thead>
         <tr class="align-middle">
-            <th class="p-3">Nom</th>
-            <th class="p-3">Incidències Assignades</th>
-            <th class="p-3">Incidèncias Tancadas</th>
-            <th class="p-3">Temps mitjà d'actuació</th>
-            <th class="p-3">Llista de incidències</th>
+            <th class="p-md-3 p-1">Nom</th>
+            <th class="p-md-3 p-1">Incidències Assignades</th>
+            <th class="p-md-3 p-1">Incidèncias Tancadas</th>
+            <th class="p-md-3 p-1">Temps mitjà d'actuació</th>
+            <th class="p-md-3 p-1">Llista de incidències</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($tecnics as $t) { ?>
             <tr class="align-middle">
-                <td class="p-3"><?php echo $t["nom"] ?></td>
-                <td class="p-3">
+                <td class="p-md-3 p-1"><?php echo $t["nom"] ?></td>
+                <td class="p-md-3 p-1">
                     <?php echo countIncidenciasAsignadas($mysqli, $t["id"]); ?>
                 </td>                
-                <td class="p-3">
+                <td class="p-md-3 p-1">
                     <?php echo countIncidenciasFinalizadas($mysqli, $t["id"]); ?>
                 </td>  
 
-                <td class="p-3">
+                <td class="p-md-3 p-1">
                     <?php 
                         $avg_raw = countAvgTime($mysqli, $t["id"]); 
                         echo formatMinutes($avg_raw); 
@@ -120,7 +143,7 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 
 
 
-                <td class="p-3">
+                <td class="p-md-3 p-2">
                     <a href="incidencias_por_tecnic.php?id=<?php echo $t["id"]?>" class="btn btn-light rounded-pill btn-sm text-black">
                         Veure Incidències
                     </a>

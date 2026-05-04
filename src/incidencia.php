@@ -30,7 +30,7 @@ include_once "header.php";
     <form action="actualitzar_incidencia.php" method="POST">
         <input type="hidden" name="id_incidencia" value="<?php echo $incidencia['id']; ?>">
         <input type="hidden" name="bulk_update" value="1"> <div class="row"> 
-            <div class="col-md-6">
+            <div class="col-md-6 mb-2">
                 <div class="card bg-dark text-light p-3 border-secondary">
                     <h3>Informació General</h3>
                     <hr class="border-secondary">
@@ -88,7 +88,7 @@ include_once "header.php";
                 </div>
             </div>
 
-            <div class="col-md-6 border-start border-secondary d-flex flex-column align-content-end justify-content-start">
+            <div class="col-md-6 mt-2 border-start border-secondary d-flex flex-column align-content-end justify-content-start">
                 <h3 class="ms-3">Historial d'actuacions</h3>
                 <div class="p-3">
                     <?php if ($historial->num_rows > 0): ?>

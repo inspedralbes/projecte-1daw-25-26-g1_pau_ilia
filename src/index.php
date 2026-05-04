@@ -81,21 +81,21 @@ try {
         <h2 class="text-light mb-4">Estàtica de totes les incidències</h2>
         
         <div class="col-md-4">
-            <div class="card bg-dark rounded-4 border-secondary p-2">
+            <div class="card bg-dark mb-2 rounded-4 border-secondary p-2">
                 <h5 class="text-light">Registrats</h5>
                 <h2 class="text-secondary"><?php echo $total; ?></h2>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card bg-dark rounded-4 border-secondary p-2">
+            <div class="card bg-dark mb-2 rounded-4 border-secondary p-2">
                 <h5 class="text-light">En procés</h5>
                 <h2 class="text-warning"><?php echo $enProces; ?></h2>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card bg-dark rounded-4 border-secondary p-2">
+            <div class="card bg-dark mb-2 rounded-4 border-secondary p-2">
                 <h5 class="text-light">Tancades</h5>
                 <h2 class="text-success"><?php echo $tancades; ?></h2>
             </div>

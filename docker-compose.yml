@@ -44,9 +44,26 @@ services:
     networks:
       - gi3p-network
 
+  mongodb:
+    image: mongodb/mongodb-atlas-local
+    hostname: mongodb
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=user
+      - MONGODB_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - "27018:27017"  
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - db:/data/db
+      - configdb:/data/configdb
+      - mongot:/data/mongot
+
 networks:
   gi3p-network:
     driver: bridge
 
 volumes:
   db_data:
+  db:
+  configdb:
+  mongot:

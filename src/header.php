@@ -12,43 +12,57 @@
 
     <style>
         .navbar-brand { font-weight: bold; letter-spacing: 1px; }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath fill-rule='evenodd' d='M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z'/%3e%3cpath fill-rule='evenodd' d='M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z'/%3e%3c/svg%3e");
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4 py-1">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4 py-2 px-md-0 px-4">
         <div class="container">
             <a class="navbar-brand text-light" href="index.php">
-                 Institut Pedralbes
+                Institut Pedralbes
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item mx-2 d-flex align-items-center">
-                        <input type="number" id="incidenciaId" class="form-control form-control-sm" 
+                <ul class="navbar-nav ms-auto align-items-center gap-3 py-3 py-lg-0">
+                    
+                    <li class="nav-item d-flex align-items-center">
+                        <input type="number" id="incidenciaId" class="form-control form-control-sm me-2" 
                             placeholder="ID..." 
-                            style="width: 0; opacity: 0; transition: all 0.4s ease; overflow: hidden;">
+                            style="width: 0; opacity: 0; transition: all 0.4s ease; padding: 0; border: none; overflow: hidden;">
                         
                         <button type="button" onclick="gestionarBusqueda()" id="btnBusqueda" 
-                                class="nav-link btn btn-secondary rounded-circle text-light p-2" 
-                                style="width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border: none;">
+                                class="btn btn-secondary rounded-circle text-light p-0 d-flex align-items-center justify-content-center" 
+                                style="width: 38px; height: 38px; border: none;">
                             <i class="bi bi-search"></i>
                         </button>
                     </li>
-                    <li class="nav-item mx-1">
-                        <a class="nav-link text-light" href="tecnics.php">
-                            <i class="bi bi-tools"></i> Tecnics
+
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" href="tecnics.php">
+                            <i class="bi bi-tools me-2"></i> Tecnics
                         </a>
                     </li>
-                    <li class="nav-item mx-1">
-                        <a class="nav-link text-warning" href="todas_incidencias.php">
-                            <i class="bi bi-exclamation-triangle-fill"></i> Incidències
+
+                    <li class="nav-item">
+                        <a class="nav-link text-warning d-flex align-items-center" href="todas_incidencias.php">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i> Incidències
                         </a>
                     </li>
-                    <li class="nav-item d-flex align-items-center">
-                        <a class="nav-link btn btn-light rounded-pill btn-sm text-black ms-lg-3 p-2" href="formulari_incidencia.php">
-                            <i class="bi bi-plus-circle"></i> Afegir Incidència
+
+                    <li class="nav-item mt-2 mt-lg-0">
+                        <a class="btn btn-light rounded-pill btn-sm text-black px-3 py-2 d-flex align-items-center" href="formulari_incidencia.php">
+                            <i class="bi bi-plus-circle me-2"></i> Afegir Incidència
                         </a>
                     </li>
                 </ul>
@@ -87,6 +101,14 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             const input = document.getElementById('incidenciaId');
+            const toggler = document.querySelector('.navbar-toggler');
+            const menu = document.getElementById('navbarNav');
+
+            toggler.addEventListener('click', function() {
+                menu.classList.toggle('show');
+                const isExpanded = toggler.getAttribute('aria-expanded') === 'true';
+                toggler.setAttribute('aria-expanded', !isExpanded);
+            });
             if (input) {
                 input.addEventListener('keypress', function (e) {
                     if (e.key === 'Enter') gestionarBusqueda();

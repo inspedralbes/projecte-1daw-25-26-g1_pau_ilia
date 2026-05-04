@@ -16,8 +16,12 @@ $host = getenv('DB_HOST') ?: "db";
 $base_de_datos = getenv('DB_NAME') ?: "gi3p_db";
 $usuario = getenv('DB_USER') ?: "dev_user";
 $contrasenia = getenv('DB_PASS') ?: "dev_password";
+$uri = getenv('MONGO_DB') ?: 'mongodb://mongodb:27017/';
 
-$mysqli = new mysqli($host, $usuario, $contrasenia, $base_de_datos);
+$uri = getenv('MONGO_DB') ?: 'mongodb://mongodb:27017/';
+
+$client = new MongoDB\Client($uri);
+$db = $client->test;
 
 if ($mysqli->connect_errno) {
     die("Error de conexión: " . $mysqli->connect_error);
