@@ -44,25 +44,60 @@
         </div>
     </div>
 </div>
-<div class="container mt-4 ">
+
+<?php
+$host = 'db';
+$db   = 'gi3p_db';
+$user = 'dev_user';
+$pass = 'dev_password';
+$charset = 'utf8mb4';
+
+$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+
+try {
+    $pdo = new PDO($dsn, $user, $pass, $options);
+
+    $stmtTotal = $pdo->query("SELECT COUNT(*) FROM incidencies");
+    $total = $stmtTotal->fetchColumn();
+
+    $stmtProces = $pdo->query("SELECT COUNT(*) FROM incidencies WHERE estado = 'En Proces'");
+    $enProces = $stmtProces->fetchColumn();
+
+    $stmtTancades = $pdo->query("SELECT COUNT(*) FROM incidencies WHERE estado = 'Finalitzat'");
+    $tancades = $stmtTancades->fetchColumn();
+
+} catch (\PDOException $e) {
+    echo "Error en la connexió: " . $e->getMessage();
+}
+?>
+
+<div class="container mt-4">
     <div class="row text-center">
-        <h2 class=" text-light mb-4">Estàtica de totes les incidències</h2>
+        <h2 class="text-light mb-4">Estàtica de totes les incidències</h2>
+        
         <div class="col-md-4">
             <div class="card bg-dark rounded-4 border-secondary p-2">
                 <h5 class="text-light">Registrats</h5>
-                <h2 class="text-secondary">14</h2>
+                <h2 class="text-secondary"><?php echo $total; ?></h2>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card bg-dark rounded-4 border-secondary p-2">
                 <h5 class="text-light">En procés</h5>
-                <h2 class="text-warning">3</h2>
+                <h2 class="text-warning"><?php echo $enProces; ?></h2>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card bg-dark rounded-4 border-secondary p-2">
                 <h5 class="text-light">Tancades</h5>
-                <h2 class="text-success">8</h2>
+                <h2 class="text-success"><?php echo $tancades; ?></h2>
             </div>
         </div>
     </div>
