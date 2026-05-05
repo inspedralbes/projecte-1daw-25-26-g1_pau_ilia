@@ -1,6 +1,12 @@
 <?php include_once "header.php";
 require_once 'logger.php';
 
+
+$resultado = $mysqli->query("SELECT COUNT(*) FROM incidencies");
+$total_inc = $resultado->fetch_all(MYSQLI_ASSOC);
+
+
+
 ?>
 
 <div class="container mt-5">
@@ -48,36 +54,6 @@ require_once 'logger.php';
     </div>
 </div>
 
-<?php
-$host = 'db';
-$db   = 'gi3p_db';
-$user = 'dev_user';
-$pass = 'dev_password';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-
-    $stmtTotal = $pdo->query("SELECT COUNT(*) FROM incidencies");
-    $total = $stmtTotal->fetchColumn();
-
-    $stmtProces = $pdo->query("SELECT COUNT(*) FROM incidencies WHERE estado = 'En Proces'");
-    $enProces = $stmtProces->fetchColumn();
-
-    $stmtTancades = $pdo->query("SELECT COUNT(*) FROM incidencies WHERE estado = 'Finalitzat'");
-    $tancades = $stmtTancades->fetchColumn();
-
-} catch (\PDOException $e) {
-    echo "Error en la connexió: " . $e->getMessage();
-}
-?>
 
 <div class="container mt-4">
     <div class="row text-center">

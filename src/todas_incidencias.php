@@ -3,19 +3,30 @@ include_once "header.php";
 $mysqli = include_once "conneccion.php";
 require_once 'logger.php';
 
+$sort = $_GET['sort'] ?? 'id';
+$order = strtoupper($_GET['order'] ?? 'ASC');
 
-$resultado = $mysqli->query("SELECT id, title, estado, prioritat, tecnic_id, tipus_id, data_incidencia FROM incidencies");
+if ($order !== 'ASC' && $order !== 'DESC') {
+    $order = 'ASC';
+}
+
+$sql_order = "ORDER BY id DESC";
+
+if ($sort === 'prioritat') {
+    $sql_order = "ORDER BY (prioritat IS NULL OR prioritat = '') ASC, FIELD(prioritat, 'Alta', 'Mitjana', 'Baixa') $order";
+} elseif ($sort === 'data') {
+    $sql_order = "ORDER BY data_incidencia $order";
+}
+
+$resultado = $mysqli->query("SELECT id, title, estado, prioritat, tecnic_id, tipus_id, data_incidencia FROM incidencies $sql_order");
 $incidencias = $resultado->fetch_all(MYSQLI_ASSOC);
-
 
 $res_tipos = $mysqli->query("SELECT id, nom FROM tipos_incidencia");
 $tipos_disponibles = $res_tipos->fetch_all(MYSQLI_ASSOC);
 
-
 $res_tecnics = $mysqli->query("SELECT id, nom FROM tecnics");
 $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
 ?>
-
 
 <style>
    .row-alta {
@@ -31,18 +42,15 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
        border-left: 5px solid #198754;
    }
 
-
    table .asign-btn {
        display: flex;
        align-items: center;
    }
 
-
    table .asign-btn .edit-btn {
        opacity: 0.7;
        transition: .3s;
    }
-
 
    table tr:hover .edit-btn, .edit-btn:focus {
        opacity: 1;
@@ -53,10 +61,19 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
    }
 </style>
 
-
 <main class="col m-4 table-responsive">
-   <h1 class="text-center text-white fw-bold mb-4">Totes les incidències</h1>
-
+   
+   <div class="d-flex justify-content-between align-items-center mb-4">
+       <h1 class="text-white fw-bold m-0">Totes les incidències</h1>
+       
+        <select class="form-select bg-dark text-white border-light w-auto shadow-sm" aria-label="Ordenar incidències" onchange="if(this.value) window.location.href=this.value;">
+            <option value="" selected disabled>Ordenar per...</option>
+            <option value="?sort=prioritat&order=asc">Prioritat (Alta a Baixa)</option>
+            <option value="?sort=prioritat&order=desc">Prioritat (Baixa a Alta)</option>
+            <option value="?sort=data&order=desc">Data (Més recents primer)</option>
+            <option value="?sort=data&order=asc">Data (Més antigues primer)</option>
+        </select>
+   </div>
 
    <table class="table table-dark table-hover rounded-4">
        <thead>
@@ -104,7 +121,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                        <?php endif; ?>
                    </td>
 
-
                    <td class="p-3">
                        <?php if (empty($incidencia["tipus_id"])): ?>
                            <button type="button" class="btn btn-outline-info btn-sm"
@@ -131,7 +147,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                            </div>
                        <?php endif; ?>
                    </td>
-
 
                    <td class="p-3">
                        <?php if (empty($incidencia["tecnic_id"])): ?>
@@ -160,7 +175,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                        <?php endif; ?>
                    </td>
 
-
                    <td class="p-3"><?php echo htmlspecialchars($incidencia["data_incidencia"]) ?></td>
                    <td class="p-3">
                        <a href="incidencia.php?id=<?php echo $incidencia["id"]?>"
@@ -174,7 +188,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
        </tbody>
    </table>
 </main>
-
 
 <div class="modal fade" id="modalAssignar" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
  <div class="modal-dialog">
@@ -197,7 +210,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
            </select>
          </div>
 
-
          <div id="selector_tipus" class="d-none">
            <label for="valor_tipus" class="form-label">Tria el Tipus:</label>
            <select name="valor_tipus" id="valor_tipus" class="form-select">
@@ -206,7 +218,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
                <?php endforeach; ?>
            </select>
          </div>
-
 
          <div id="selector_tecnics" class="d-none">
            <label for="valor_tecnics" class="form-label">Tria el Tècnic:</label>
@@ -226,7 +237,6 @@ $tecnics = $res_tecnics->fetch_all(MYSQLI_ASSOC);
  </div>
 </div>
 
-
 <script>
 const modalAssignar = document.getElementById('modalAssignar');
 modalAssignar.addEventListener('show.bs.modal', event => {
@@ -234,10 +244,8 @@ modalAssignar.addEventListener('show.bs.modal', event => {
  const id = button.getAttribute('data-id');
  const tipus = button.getAttribute('data-tipus');
 
-
  document.getElementById('modal_id').value = id;
  document.getElementById('modal_camp').value = tipus;
-
 
  if(tipus === 'prioritat') {
    document.getElementById('selector_prioritat').classList.remove('d-none');
@@ -254,6 +262,5 @@ modalAssignar.addEventListener('show.bs.modal', event => {
  }
 });
 </script>
-
 
 <?php include_once "footer.php"; ?>

@@ -35,7 +35,6 @@ require_once 'logger.php';
                     <label for="descripcion" class="form-label fw-bold">Descripció <span class="text-danger">*</span></label>
                     <textarea placeholder="Explica breument el problema..." class="form-control bg-light" name="descripcion" id="descripcion" rows="3" required aria-required="true"></textarea>
                 </div>
-
                 <div class="mb-2">
                     <button type="submit" class="btn btn-success w-100">
                         <i class="bi bi-save" aria-hidden="true"></i> Registrar Incidència
