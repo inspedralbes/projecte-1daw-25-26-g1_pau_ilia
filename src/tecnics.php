@@ -3,6 +3,7 @@ include_once "header.php";
 
 $mysqli = include_once "conneccion.php";
 
+require_once 'logger.php';
 
 
 function countIncidenciasAsignadas($mysqli, $id_tecnic) {

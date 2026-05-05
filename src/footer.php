@@ -1,3 +1,7 @@
+
+<?php require_once 'logger.php';
+ ?>
+
 <body class="d-flex flex-column min-vh-100">
 
     <main class="flex-shrink-0">

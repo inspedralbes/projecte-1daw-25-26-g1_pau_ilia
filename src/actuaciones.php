@@ -1,6 +1,7 @@
 <?php
 include_once "header.php";
 $mysqli = include_once "conneccion.php";
+require_once 'logger.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die("<div class='alert alert-danger m-4'>Error: ID d'incidència no vàlid.</div>");

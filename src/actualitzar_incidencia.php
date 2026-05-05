@@ -1,5 +1,7 @@
 <?php
 $mysqli = include_once "conneccion.php";
+require_once 'logger.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id_incidencia'];
     if (isset($_POST['bulk_update'])) {

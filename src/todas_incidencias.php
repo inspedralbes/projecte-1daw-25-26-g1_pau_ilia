@@ -1,6 +1,7 @@
 <?php
 include_once "header.php";
 $mysqli = include_once "conneccion.php";
+require_once 'logger.php';
 
 $resultado = $mysqli->query("SELECT id, title, estado, prioritat, tecnic_id, tipus_id, data_incidencia
 FROM incidencies");

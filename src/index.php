@@ -1,4 +1,7 @@
-<?php include_once "header.php"; ?>
+<?php include_once "header.php";
+require_once 'logger.php';
+
+?>
 
 <div class="container mt-5">
     <div class="row justify-content-center">

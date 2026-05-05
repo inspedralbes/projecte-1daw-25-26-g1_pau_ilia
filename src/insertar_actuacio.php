@@ -1,22 +1,19 @@
 <?php
 include_once "conneccion.php";
+require_once 'logger.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     $id_inc = $_POST["id_incidencia"]; 
-
     $sentencia = $mysqli->prepare("SELECT tecnic_id, estado FROM incidencies WHERE id = ?");
     $sentencia->bind_param("i", $id_inc);
     $sentencia->execute();
     $resultado = $sentencia->get_result();
     $incidencia = $resultado->fetch_assoc();
-
     if (!$incidencia) {
         exit("Incidencia no trobada.");
     }
-
     $tecnic_id = $incidencia["tecnic_id"];
-
     $descripcion = $_POST["descripcion"];
     $isVisible = $_POST["visible_usuari"]; 
     $temp = $_POST["temp"];

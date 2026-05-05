@@ -1,5 +1,6 @@
 <?php
 include_once "conneccion.php";
+require_once 'logger.php';
 
 if (!isset($_GET["id"])) {
     exit("ID no proporcionado");

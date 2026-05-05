@@ -1,5 +1,7 @@
 <?php
 include_once "conneccion.php";
+require_once 'logger.php';
+
 $id = $_GET["id"];
 
 $sentencia = $mysqli->prepare("SELECT i.*, t.nom AS tecnic_nom FROM incidencies i LEFT JOIN tecnics t ON i.tecnic_id = t.id WHERE i.id = ?");
