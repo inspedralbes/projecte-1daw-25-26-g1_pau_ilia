@@ -81,7 +81,7 @@ try {
 
 <div class="container mt-4">
     <div class="row text-center">
-        <h2 class="text-light mb-4">Estàtica de totes les incidències</h2>
+        <h2 class="text-light mb-4">Estàdistica de totes les incidències</h2>
         
         <div class="col-md-4">
             <div class="card bg-dark mb-2 rounded-4 border-secondary p-2">

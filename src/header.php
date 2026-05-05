@@ -2,7 +2,7 @@
 <?php require_once 'logger.php';
  ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="ca">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,13 +26,13 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4 py-2 px-md-0 px-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4 py-2 px-md-0 px-4" aria-label="Navegació principal">
         <div class="container">
             <a class="navbar-brand text-light" href="index.php">
                 Institut Pedralbes
             </a>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar menú de navegació">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
@@ -40,38 +40,42 @@
                 <ul class="navbar-nav ms-auto align-items-center gap-3 py-3 py-lg-0">
                     
                     <li class="nav-item d-flex align-items-center">
+                        <label for="incidenciaId" class="visually-hidden">Cercar incidència per ID</label>
                         <input type="number" id="incidenciaId" class="form-control form-control-sm me-2" 
                             placeholder="ID..." 
-                            style="width: 0; opacity: 0; transition: all 0.4s ease; padding: 0; border: none; overflow: hidden;">
+                            style="width: 0; opacity: 0; transition: all 0.4s ease; padding: 0; border: none; overflow: hidden;"
+                            aria-hidden="true">
                         
                         <button type="button" onclick="gestionarBusqueda()" id="btnBusqueda" 
                                 class="btn btn-secondary rounded-circle text-light p-0 d-flex align-items-center justify-content-center" 
-                                style="width: 38px; height: 38px; border: none;">
-                            <i class="bi bi-search"></i>
+                                style="width: 38px; height: 38px; border: none;"
+                                aria-label="Obrir cercador">
+                            <i class="bi bi-search" aria-hidden="true"></i>
                         </button>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link text-light d-flex align-items-center" href="tecnics.php">
-                            <i class="bi bi-tools me-2"></i> Tecnics
+                            <i class="bi bi-tools me-2" aria-hidden="true"></i> Tècnics
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link text-warning d-flex align-items-center" href="todas_incidencias.php">
-                            <i class="bi bi-exclamation-triangle-fill me-2"></i> Incidències
+                            <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Incidències
                         </a>
                     </li>
 
                     <li class="nav-item mt-2 mt-lg-0">
                         <a class="btn btn-light rounded-pill btn-sm text-black px-3 py-2 d-flex align-items-center" href="formulari_incidencia.php">
-                            <i class="bi bi-plus-circle me-2"></i> Afegir Incidència
+                            <i class="bi bi-plus-circle me-2" aria-hidden="true"></i> Afegir Incidència
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function gestionarBusqueda() {
