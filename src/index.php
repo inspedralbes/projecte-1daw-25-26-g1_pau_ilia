@@ -1,11 +1,20 @@
 <?php include_once "header.php";
+include_once "conneccion.php";
 require_once 'logger.php';
 
 
-$resultado = $mysqli->query("SELECT COUNT(*) FROM incidencies");
-$total_inc = $resultado->fetch_all(MYSQLI_ASSOC);
+function getCount($mysqli, $status) {
+    $stmt = $mysqli->prepare("SELECT COUNT(*) as total FROM incidencies WHERE estado = ?");
+    $stmt->bind_param("s", $status);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['total'];
+}
 
-
+$total_inc_reg = getCount($mysqli, 'Registrat');
+$total_inc_proces = getCount($mysqli, 'En Proces');
+$total_inc_fin = getCount($mysqli, 'Finalitzat');
 
 ?>
 
@@ -62,21 +71,21 @@ $total_inc = $resultado->fetch_all(MYSQLI_ASSOC);
         <div class="col-md-4">
             <div class="card bg-dark mb-2 rounded-4 border-secondary p-2">
                 <h5 class="text-light">Registrats</h5>
-                <h2 class="text-secondary"><?php echo $total; ?></h2>
+                <h2 class="text-secondary"><?php echo $total_inc_reg; ?></h2>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="card bg-dark mb-2 rounded-4 border-secondary p-2">
                 <h5 class="text-light">En procés</h5>
-                <h2 class="text-warning"><?php echo $enProces; ?></h2>
+                <h2 class="text-warning"><?php echo $total_inc_proces; ?></h2>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="card bg-dark mb-2 rounded-4 border-secondary p-2">
                 <h5 class="text-light">Tancades</h5>
-                <h2 class="text-success"><?php echo $tancades; ?></h2>
+                <h2 class="text-success"><?php echo $total_inc_fin; ?></h2>
             </div>
         </div>
     </div>

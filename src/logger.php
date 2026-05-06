@@ -16,6 +16,7 @@ $logDocument = [
     'timestamp' => new MongoDB\BSON\UTCDateTime() 
 ];
 
+
 try {
     $coleccionLogs->insertOne($logDocument);
 } catch (Exception $e) {
