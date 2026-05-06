@@ -36,11 +36,82 @@ $labels_json = json_encode($labels);
 $counts_json = json_encode($counts);
 ?>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div style="width: 80%; margin: auto;">
-    <canvas id="graficTendencies"></canvas>
-</div>
+
+
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <title>Dashboard de Control</title>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Volver</a>
+        <h1 class="mb-4">Estadístiques Generals</h2>
+
+        <div style="width: 80%; margin: auto; padding: .3rem;">
+            <canvas id="graficTendencies"></canvas>
+        </div>
+    
+        <p class="fs-4"><strong>Total d'accessos:</strong> <?php echo $total_vis; ?></p>
+
+        <p class="fs-4"><strong>Top Pàgines:</strong></p>
+        <ul>
+            <?php foreach ($res_pagina_mas_vis as $pag) : ?>
+                <li class="fs-7"><?php echo $pag['_id']; ?> (<?php echo $pag['count']; ?> visites)</li>
+            <?php endforeach; ?>
+        </ul>
+
+        <hr>
+
+
+
+        <div class="col m-4 table-responsive">
+            <div class="d-flex justify-content-between text-center align-items-center mb-4">
+                <h3>Últims 10 logs:</h3>
+                <br>
+            </div>
+
+            <table class="table custom-font-size-table rounded-4 text-center">
+                <thead>
+                    <tr class="align-middle">
+                        <th class="p-md-3 p-1">URL</th>
+                        <th class="p-md-3 p-1">Metodo</th>
+                        <th class="p-md-3 p-1">IP</th>
+                        <th class="p-md-3 p-1">Navegador</th>
+                        <th class="p-md-3 p-1">Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($logs_detallados as $log) :  ?>
+                        <?php $fecha = $log['timestamp']->toDateTime()->format('d/m/Y H:i:s'); ?>
+                        <tr class="align-middle">
+                            <td class="p-md-2 p-1"><?php echo $log["url"] ?></td>
+                            <td class="p-md-2 p-1">
+                                <?php echo $log["metodo"]; ?>
+                            </td>                
+                            <td class="p-md-2 ">
+                                <?php echo $log["ip"]; ?>
+                            </td>      
+                            <td class="p-md-2 p-1">
+                                <?php echo $log["navegador"]; ?>
+                            </td> 
+                            <td class="p-md-2 p-1">
+                                <?php echo $fecha ?>
+                            </td> 
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
 
 <script>
 const ctx = document.getElementById('graficTendencies').getContext('2d');
@@ -75,41 +146,11 @@ new Chart(ctx, {
 });
 </script>
 
-?>
-
-<!DOCTYPE html>
-<html lang="ca">
-<head>
-    <title>Dashboard de Control</title>
-</head>
-<body>
-
-    <div class="container">
-        <h2>Estadístiques Generals</h2>
-    
-        <p><strong>Total d'accessos:</strong> <?php echo $total_vis; ?></p>
-
-        <p><strong>Top Pàgines:</strong></p>
-        <ul>
-            <?php foreach ($res_pagina_mas_vis as $pag) : ?>
-                <li><?php echo $pag['_id']; ?> (<?php echo $pag['count']; ?> visites)</li>
-            <?php endforeach; ?>
-        </ul>
-
-        <hr>
-
-        <h3>Últims 10 logs:</h3>
-        <?php foreach ($logs_detallados as $log) : ?>
-            <p>
-                <?php
-                $fecha = $log['timestamp']->toDateTime()->format('d/m/Y H:i:s');
-                echo "Visitó: <b>" . $log['url'] . "</b> el " . $fecha . " desde IP: " . $log["ip"];
-                ?>
-            </p>
-        <?php endforeach; ?>
-    </div>
-
 </body>
 </html>
 
+
+
 <?php include_once "footer.php"; ?>
+
+
