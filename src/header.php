@@ -66,6 +66,12 @@
                         </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" href="dashboard.php">
+                            <i class="bi bi-speedometer2 me-2" aria-hidden="true"></i> Dashboard
+                        </a>
+                    </li>
+
                     <li class="nav-item mt-2 mt-lg-0">
                         <a class="btn btn-light rounded-pill btn-sm text-black px-3 py-2 d-flex align-items-center" href="formulari_incidencia.php">
                             <i class="bi bi-plus-circle me-2" aria-hidden="true"></i> Afegir Incidència
