@@ -61,14 +61,20 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-warning d-flex align-items-center" href="todas_incidencias.php">
-                            <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Incidències
+                        <a class="nav-link text-light d-flex align-items-center" href="dashboard.php">
+                            <i class="bi bi-speedometer2 me-2" aria-hidden="true"></i> Panel
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-light d-flex align-items-center" href="dashboard.php">
-                            <i class="bi bi-speedometer2 me-2" aria-hidden="true"></i> Dashboard
+                        <a class="nav-link text-light d-flex align-items-center" href="departamentos.php">
+                            <i class="bi bi-building-fill me-2" aria-hidden="true"></i> Departaments
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-warning d-flex align-items-center" href="todas_incidencias.php">
+                            <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Incidències
                         </a>
                     </li>
 
