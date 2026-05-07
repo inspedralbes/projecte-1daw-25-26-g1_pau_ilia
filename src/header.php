@@ -1,4 +1,3 @@
-
 <?php require_once 'logger.php';
  ?>
 <!DOCTYPE html>
@@ -16,8 +15,11 @@
     <style>
         .navbar-brand { font-weight: bold; letter-spacing: 1px; }
 
-        .navbar-toggler:focus {
-            box-shadow: none;
+        .navbar-toggler:focus,
+        .navbar-toggler:focus-visible {
+            outline: 3px solid #fff;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px rgba(255,255,255,.35);
         }
 
         .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
@@ -104,6 +106,7 @@
                 input.style.padding = '0.25rem 0.5rem';
                 input.style.marginRight = '10px';
                 input.style.border = '1px solid #ced4da';
+                input.setAttribute('aria-hidden', 'false');
                 input.focus();
             } else {
                 if (id !== "") {
@@ -114,20 +117,15 @@
                     input.style.padding = '0';
                     input.style.marginRight = '0';
                     input.style.border = 'none';
+
+                    input.setAttribute('aria-hidden', 'true');
                 }
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             const input = document.getElementById('incidenciaId');
-            const toggler = document.querySelector('.navbar-toggler');
-            const menu = document.getElementById('navbarNav');
 
-            toggler.addEventListener('click', function() {
-                menu.classList.toggle('show');
-                const isExpanded = toggler.getAttribute('aria-expanded') === 'true';
-                toggler.setAttribute('aria-expanded', !isExpanded);
-            });
             if (input) {
                 input.addEventListener('keypress', function (e) {
                     if (e.key === 'Enter') gestionarBusqueda();

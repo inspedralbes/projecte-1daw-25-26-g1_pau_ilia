@@ -28,12 +28,12 @@ require_once 'logger.php';
 
                 <div class="mb-3">
                     <label for="date" class="form-label fw-bold">Data <span class="text-danger">*</span></label>
-                    <input class="form-control bg-light" type="date" name="date" id="date" required aria-required="true">
+                    <input class="form-control bg-light" type="date" name="date" id="date" required aria-required="true" max="<?= date('Y-m-d') ?>">
                 </div>
 
                 <div class="mb-4">
                     <label for="descripcion" class="form-label fw-bold">Descripció <span class="text-danger">*</span></label>
-                    <textarea placeholder="Explica breument el problema..." class="form-control bg-light" name="descripcion" id="descripcion" rows="3" required aria-required="true"></textarea>
+                    <textarea placeholder="Explica breument el problema..." class="form-control bg-light" name="descripcion" id="descripcion" rows="3" required aria-required="true" minlength="10"></textarea>
                 </div>
                 <div class="mb-2">
                     <button type="submit" class="btn btn-success w-100">
