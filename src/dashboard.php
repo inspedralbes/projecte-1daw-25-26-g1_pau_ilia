@@ -47,7 +47,7 @@ $counts_json = json_encode($counts);
 <body>
 
     <div class="container">
-        <a href="/" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Volver</a>
+        <a href="/" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Tornar</a>
         <h1 class="mb-4">Estadístiques Generals</h2>
 
         <div style="width: 80%; margin: auto; padding: .3rem;">

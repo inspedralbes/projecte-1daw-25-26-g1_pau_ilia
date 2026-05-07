@@ -38,46 +38,73 @@ include_once "header.php";
 </head>
 
 
-<div class="container mt-4 mb-4">
-    <a href="/incidencia.php?id=<?php echo $id?>"  class="btn btn-secondary mb-1"><i class="bi bi-arrow-bar-left mx-1"></i>Volver</a>
-    <div class="row">
-        <div class="col-12 col-md-8 offset-md-2">
-            <h1 class="mb-4">Registrar Actuació</h1>
-            <form action="insertar_actuacio.php" method="POST" class="card p-4 shadow-sm">
-                <input type="hidden" name="id_incidencia" value="<?php echo $id; ?>">
+<html>
+    <body>
+        <div class="container mt-4 mb-4">
+            <a href="/incidencia.php?id=<?php echo htmlspecialchars($id)?>"  class="btn btn-secondary rounded-pill mb-1"><i class="bi bi-arrow-bar-left mx-1"></i>Tornar</a>
+            <div class="row">
+                <div class="col-12 col-md-8 offset-md-2">
+                    <h1 class="mb-4">Registrar Actuació</h1>
+                    <form action="insertar_actuacio.php" method="POST" class="card p-4 shadow-sm">
+                        <input type="hidden" name="id_incidencia" value="<?php echo htmlspecialchars($id); ?>">
 
-                <div class="mb-4">
-                    <label for="descripcion" class="form-label fw-bold">Descripció</label>
-                    <textarea placeholder="Añade una descripción..." class="form-control placeholder-primary bg-light" name="descripcion" id="descripcion" rows="3" required></textarea>
-                </div>
+                        <div class="mb-4">
+                            <label for="descripcion" class="form-label fw-bold">Descripció</label>
+                            <textarea placeholder="Añade una descripción..." class="form-control placeholder-primary bg-light" name="descripcion" id="descripcion" rows="3" required></textarea>
+                        </div>
 
-                <div class="mb-3">
-                    <label for="temp" class="form-label fw-bold">Temps invertit</label>
-                    <input placeholder="Ej. 20min" class="form-control placeholder-primary bg-light" type="text" name="temp" id="temp" required>
-                </div>
+                        <div class="mb-3">
+                            <label for="temp" class="form-label fw-bold">Temps invertit</label>
+                            <input placeholder="Ej. 20min" class="form-control placeholder-primary bg-light" type="text" name="temp" id="temp" required>
+                        </div>
 
-                <div class="form-check form-switch mb-4">
-                    <input type="hidden" name="visible_usuari" value="No">
-                    
-                    <input class="form-check-input" type="checkbox" name="visible_usuari" id="visible_usuari" value="Si">
-                    <label class="form-check-label fw-bold" for="visible_usuari">Visible per l'usuari</label>
-                </div>
+                        <div class="form-check form-switch mb-4">
+                            <input type="hidden" name="visible_usuari" value="No">
+                            
+                            <input class="form-check-input" type="checkbox" name="visible_usuari" id="visible_usuari" value="Si">
+                            <label class="form-check-label fw-bold" for="visible_usuari">Visible per l'usuari</label>
+                        </div>
 
-                <div class="row col-md-12">
-                    <div class="mb-2 col-6">
-                        <button type="submit" class="btn btn-primary w-100">
-                            <i class="bi bi-save me-2"></i>Registrar Actuació
-                        </button>
-                    </div>
-                    <div class="mb-2 col-6">
-                        <a href="cerrar_incidencia.php?id=<?php echo $id?>" class="btn btn-secondary w-100">
-                            <i class="bi bi-x me-2 fs-6"></i>Tancar Incidència
-                        </a>
-                    </div>
+                        <div class="row col-md-12">
+                            <div class="mb-2 col-6">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="bi bi-save me-2"></i>Registrar Actuació
+                                </button>
+                            </div>
+                            <div class="mb-2 col-6">
+                                <a href="cerrar_incidencia.php?id=<?php echo $id?>" class="btn btn-secondary w-100">
+                                    <i class="bi bi-x me-2 fs-6"></i>Tancar Incidència
+                                </a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
+    </body>
+</html>
+
+<script>
+    const form = document.querySelector('form');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const descripcion = document.getElementById('descripcion').value;
+            const temps = document.getElementById('temp').value;
+
+            if (descripcion.trim().length < 15) {
+                e.preventDefault();
+                alert("La descripción debe tener al menos 15 caracteres.");
+                return;
+            }
+
+            if (!/\d/.test(temps)) {
+                e.preventDefault();
+                alert("El tiempo debe incluir números.");
+                return;
+            }
+        });
+    }
+</script>
 
 <?php include_once "footer.php"; ?>

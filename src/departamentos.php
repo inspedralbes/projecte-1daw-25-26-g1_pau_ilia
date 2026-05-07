@@ -103,7 +103,7 @@ $departamentos = $res_dep->fetch_all(MYSQLI_ASSOC);
 
 <div class="col m-4 table-responsive">
     <div class="d-flex justify-content-between text-center align-items-center mb-4">
-        <a href="/" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Volver</a>
+        <a href="/" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Tornar</a>
         <h1 class="text-center text-white custom-font-size fw-bold">Informe de les incidencies per departament</h1>
         <br>
     </div>

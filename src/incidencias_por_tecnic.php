@@ -50,6 +50,7 @@ $tipos_disponibles = $res_tipos->fetch_all(MYSQLI_ASSOC);
     <div>
         <h1 class="text-center text-white fw-bold">Incidències assignades a: <?php echo htmlspecialchars($nom_del_tecnic); ?></h1>
         <br>
+        <a href="/tecnics.php" class="btn btn-secondary rounded-pill mb-4 px-2 px-md-4 py-md-2">Tornar</a>
     </div>
 
     <table class="table rounded-4">
@@ -141,7 +142,6 @@ $tipos_disponibles = $res_tipos->fetch_all(MYSQLI_ASSOC);
         </tbody>
     </table>
     
-    <a href="javascript:history.back()" class="btn btn-outline-light mt-3">Tornar a Tècnics</a>
 </div>
 
 <div class="modal fade" id="modalAssignar" tabindex="-1" aria-hidden="true">

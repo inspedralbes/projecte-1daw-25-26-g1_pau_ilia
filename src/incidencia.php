@@ -26,7 +26,7 @@ include_once "header.php";
 ?>
 
 <div class="container-fluid p-3">
-    <a href="todas_incidencias.php" class="btn btn-secondary mb-1">Tornar</a>
+    <a href="todas_incidencias.php" class="btn rounded-pill btn-secondary mb-1">Tornar</a>
     <h1 class="mb-2">Detalls de la incidència <strong>#<?php echo $incidencia["id"]?></strong></h1>
     
     <form action="actualitzar_incidencia.php" method="POST">
@@ -110,7 +110,7 @@ include_once "header.php";
                 </div>
                 
                 <div class="p-3 text-end">
-                    <a href="actuaciones.php?id=<?php echo $incidencia["id"]?>" class="btn btn-secondary mb-1">Ver Todas</a>
+                    <a href="actuaciones.php?id=<?php echo $incidencia["id"]?>" class="btn rounded-pill btn-secondary mb-1">Ver Todas</a>
                 </div>
             </div>
         </div> 
