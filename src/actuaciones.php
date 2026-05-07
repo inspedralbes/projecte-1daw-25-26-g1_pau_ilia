@@ -43,7 +43,7 @@ $actuaciones = $sentencia->get_result()->fetch_all(MYSQLI_ASSOC);
 <div class="col m-4">
     
     <div class="d-flex justify-content-between text-center align-items-center mb-4">
-        <a href="incidencia.php?id=<?php echo $id; ?>" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Volver</a>
+        <a href="incidencia.php?id=<?php echo $id; ?>" class="btn btn-secondary rounded-pill px-2 px-md-4 py-md-2">Tornar</a>
         
         <h2 class="custom-font-size text-white fw-bold bg-secondary bg-opacity-25 px-4 py-2 rounded m-0 mx-2">
             Actuacions de l'incidencia amb ID: <?php echo $id; ?>
