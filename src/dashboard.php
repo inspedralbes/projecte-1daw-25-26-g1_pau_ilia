@@ -43,6 +43,18 @@ $counts_json = json_encode($counts);
 <html lang="ca">
 <head>
     <title>Dashboard de Control</title>
+
+    <style>
+        .truncate-text {
+            max-width: 150px; 
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    </style>
+
+
 </head>
 <body>
 
@@ -79,7 +91,7 @@ $counts_json = json_encode($counts);
                         <th class="p-md-3 p-1">URL</th>
                         <th class="p-md-3 p-1">Metodo</th>
                         <th class="p-md-3 p-1">IP</th>
-                        <th class="p-md-3 p-1">Navegador</th>
+                        <th class="p-md-3 p-1 d-none d-md-table-cell">Navegador</th>
                         <th class="p-md-3 p-1">Hora</th>
                     </tr>
                 </thead>
@@ -91,12 +103,12 @@ $counts_json = json_encode($counts);
                             <td class="p-md-2 p-1">
                                 <?php echo $log["metodo"]; ?>
                             </td>                
-                            <td class="p-md-2 ">
+                            <td class="p-md-2 p-1 ">
                                 <?php echo $log["ip"]; ?>
                             </td>      
-                            <td class="p-md-2 p-1">
+                            <td class="p-md-2 p-1 d-none d-md-table-cell">
                                 <?php echo $log["navegador"]; ?>
-                            </td> 
+                            </td>
                             <td class="p-md-2 p-1">
                                 <?php echo $fecha ?>
                             </td> 

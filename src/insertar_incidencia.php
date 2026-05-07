@@ -3,7 +3,7 @@ ob_start();
 
 include_once "conneccion.php";
 require_once 'logger.php';
-
+require_once 'mailer.php';
 $title = $_POST["title"];
 $date = $_POST["date"];
 $departament = $_POST["departament"];
