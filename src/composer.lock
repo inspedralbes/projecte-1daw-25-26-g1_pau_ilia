@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< Updated upstream
-    "content-hash": "7dc5bf6170fc79fb4563476ed6ef0706",
-=======
     "content-hash": "cd5d6817fc60f8184a865777d65c0ad4",
->>>>>>> Stashed changes
     "packages": [
         {
             "name": "mongodb/mongodb",

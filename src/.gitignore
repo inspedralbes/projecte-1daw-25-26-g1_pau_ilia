@@ -1,2 +1,5 @@
 .env
 /vendor
+coneccionmongo.php
+composer.json
+composer.lock

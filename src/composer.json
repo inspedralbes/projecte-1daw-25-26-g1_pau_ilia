@@ -1,10 +1,6 @@
 {
     "require": {
-<<<<<<< Updated upstream
         "mongodb/mongodb": "^2.3",
         "phpmailer/phpmailer": "^7.0"
-=======
-        "mongodb/mongodb": "^2.1"
->>>>>>> Stashed changes
     }
 }

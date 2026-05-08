@@ -21,8 +21,7 @@ $host = 'mongodb';
 $port = '27017';   
 $dbName = 'gi3p_db';
 
-$uri = getenv('MONGO_DB');
-
+$uri = "mongodb://{$user}:{$pass}@{$host}:{$port}/{$dbName}?authSource=admin";
 try {
     $client = new MongoDB\Client($uri);
     
