@@ -13,6 +13,7 @@ if (!function_exists('loadEnv')) {
         }
     }
 }
+
 loadEnv(__DIR__ . '/.env');
 
 $user = getenv('MONGODB_INITDB_ROOT_USERNAME') ?: 'user';
@@ -21,7 +22,7 @@ $host = 'mongodb';
 $port = '27017';   
 $dbName = 'gi3p_db';
 
-$uri = "mongodb://{$user}:{$pass}@{$host}:{$port}/{$dbName}?authSource=admin";
+$uri = getenv('MONGO_DB');
 try {
     $client = new MongoDB\Client($uri);
     
