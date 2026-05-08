@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestio d'incidencies</title>
-    
+    <link rel="icon" type="image/png" href="/img/logo_institut.png">
+
     <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/slate/bootstrap.min.css" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -25,12 +26,14 @@
         .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath fill-rule='evenodd' d='M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z'/%3e%3cpath fill-rule='evenodd' d='M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z'/%3e%3c/svg%3e");
         }
+        
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4 py-2 px-md-0 px-4" aria-label="Navegació principal">
         <div class="container">
             <a class="navbar-brand text-light" href="index.php">
+                <img src="/img/logo_institut.png" alt="Logo" width="40" height="40">
                 Institut Pedralbes
             </a>
             
@@ -132,6 +135,7 @@
                 });
             }
         });
+        
     </script>
 </body>
 </html>
