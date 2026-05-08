@@ -27,8 +27,6 @@ use function is_array;
 /**
  * The in operator performs a search for an array of BSON values in a field.
  *
- * New in MongoDB 5.0
- *
  * @see https://www.mongodb.com/docs/atlas/atlas-search/in/
  * @internal
  */

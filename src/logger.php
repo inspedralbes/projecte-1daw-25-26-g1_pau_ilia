@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/coneccionmongo.php';
-
 $url_visitada = $_SERVER['REQUEST_URI'];
 $metodo_http = $_SERVER['REQUEST_METHOD'];
 $ip_usuario = $_SERVER['REMOTE_ADDR'];

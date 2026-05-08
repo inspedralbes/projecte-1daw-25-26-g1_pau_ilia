@@ -17,6 +17,7 @@ use stdClass;
 
 /**
  * Converts value to an ObjectId.
+ * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/toObjectId/
  * @internal

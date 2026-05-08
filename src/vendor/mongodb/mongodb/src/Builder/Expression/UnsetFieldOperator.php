@@ -22,8 +22,6 @@ use function str_starts_with;
  * You can use $unsetField to remove fields with names that contain periods (.) or that start with dollar signs ($).
  * $unsetField is an alias for $setField using $$REMOVE to remove fields.
  *
- * New in MongoDB 5.0
- *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/unsetField/
  * @internal
  */

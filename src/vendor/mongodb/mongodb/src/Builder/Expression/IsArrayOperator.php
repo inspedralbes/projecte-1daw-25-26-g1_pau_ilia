@@ -18,8 +18,6 @@ use stdClass;
 /**
  * Determines if the operand is an array. Returns a boolean.
  *
- * New in MongoDB 4.4
- *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/isArray/
  * @internal
  */

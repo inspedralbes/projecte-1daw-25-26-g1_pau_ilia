@@ -15,8 +15,6 @@ use MongoDB\Builder\Type\StageInterface;
 /**
  * Returns plan cache information for a collection.
  *
- * New in MongoDB 4.4
- *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/planCacheStats/
  * @internal
  */

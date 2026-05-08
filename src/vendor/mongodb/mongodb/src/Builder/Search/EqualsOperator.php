@@ -25,8 +25,6 @@ use stdClass;
 /**
  * The equals operator checks whether a field matches a value you specify.
  *
- * New in MongoDB 5.0
- *
  * @see https://www.mongodb.com/docs/atlas/atlas-search/equals/
  * @internal
  */

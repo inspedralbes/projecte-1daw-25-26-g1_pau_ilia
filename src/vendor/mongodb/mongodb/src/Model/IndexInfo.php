@@ -19,7 +19,6 @@ namespace MongoDB\Model;
 
 use ArrayAccess;
 use MongoDB\Exception\BadMethodCallException;
-use Stringable;
 
 use function array_key_exists;
 use function array_search;
@@ -35,11 +34,11 @@ use function array_search;
  * db.collection.createIndex() documentation.
  *
  * @see \MongoDB\Collection::listIndexes()
- * @see https://github.com/mongodb/specifications/blob/master/source/enumerate-indexes.md
+ * @see https://github.com/mongodb/specifications/blob/master/source/enumerate-indexes.rst
  * @see https://mongodb.com/docs/manual/reference/method/db.collection.createIndex/
  * @template-implements ArrayAccess<string, mixed>
  */
-class IndexInfo implements ArrayAccess, Stringable
+class IndexInfo implements ArrayAccess
 {
     /** @param array $info Index info */
     public function __construct(private array $info)
@@ -153,7 +152,7 @@ class IndexInfo implements ArrayAccess, Stringable
      * also be used to access fields that do not have a helper method.
      *
      * @see https://php.net/arrayaccess.offsetget
-     * @see https://github.com/mongodb/specifications/blob/master/source/enumerate-indexes.md#getting-full-index-information
+     * @see https://github.com/mongodb/specifications/blob/master/source/enumerate-indexes.rst#getting-full-index-information
      * @psalm-param array-key $offset
      */
     public function offsetGet(mixed $offset): mixed

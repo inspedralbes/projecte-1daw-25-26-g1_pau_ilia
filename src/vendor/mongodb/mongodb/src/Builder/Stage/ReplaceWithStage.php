@@ -14,7 +14,6 @@ use MongoDB\Builder\Expression\ResolvesToObject;
 use MongoDB\Builder\Type\Encode;
 use MongoDB\Builder\Type\OperatorInterface;
 use MongoDB\Builder\Type\StageInterface;
-use MongoDB\Builder\Type\UpdateStageInterface;
 use MongoDB\Exception\InvalidArgumentException;
 use stdClass;
 
@@ -28,7 +27,7 @@ use function str_starts_with;
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/replaceWith/
  * @internal
  */
-final class ReplaceWithStage implements StageInterface, UpdateStageInterface, OperatorInterface
+final class ReplaceWithStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const NAME = '$replaceWith';

@@ -14,7 +14,6 @@ use MongoDB\Builder\Type\Encode;
 use MongoDB\Builder\Type\ExpressionInterface;
 use MongoDB\Builder\Type\OperatorInterface;
 use MongoDB\Builder\Type\StageInterface;
-use MongoDB\Builder\Type\UpdateStageInterface;
 use MongoDB\Exception\InvalidArgumentException;
 use stdClass;
 
@@ -26,7 +25,7 @@ use function is_string;
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/project/
  * @internal
  */
-final class ProjectStage implements StageInterface, UpdateStageInterface, OperatorInterface
+final class ProjectStage implements StageInterface, OperatorInterface
 {
     public const ENCODE = Encode::Single;
     public const NAME = '$project';

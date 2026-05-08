@@ -18,6 +18,7 @@ use stdClass;
 
 /**
  * Converts a value to a specified type.
+ * New in MongoDB 4.0.
  *
  * @see https://www.mongodb.com/docs/manual/reference/operator/aggregation/convert/
  * @internal

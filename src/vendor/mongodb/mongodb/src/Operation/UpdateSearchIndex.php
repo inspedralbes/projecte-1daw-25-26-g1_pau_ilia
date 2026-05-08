@@ -19,10 +19,8 @@ namespace MongoDB\Operation;
 
 use MongoDB\Driver\Command;
 use MongoDB\Driver\Exception\RuntimeException as DriverRuntimeException;
-use MongoDB\Driver\Exception\ServerException;
 use MongoDB\Driver\Server;
 use MongoDB\Exception\InvalidArgumentException;
-use MongoDB\Exception\SearchNotSupportedException;
 use MongoDB\Exception\UnsupportedException;
 
 use function MongoDB\is_document;
@@ -78,14 +76,6 @@ final class UpdateSearchIndex
             $cmd['comment'] = $this->options['comment'];
         }
 
-        try {
-            $server->executeCommand($this->databaseName, new Command($cmd));
-        } catch (ServerException $e) {
-            if (SearchNotSupportedException::isSearchNotSupportedError($e)) {
-                throw SearchNotSupportedException::create($e);
-            }
-
-            throw $e;
-        }
+        $server->executeCommand($this->databaseName, new Command($cmd));
     }
 }

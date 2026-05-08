@@ -21,14 +21,13 @@ $host = 'mongodb';
 $port = '27017';   
 $dbName = 'gi3p_db';
 
-$uri = "mongodb://{$user}:{$pass}@{$host}:{$port}/";
+$uri = getenv('MONGO_DB');
 
 try {
     $client = new MongoDB\Client($uri);
     
     $database = $client->selectDatabase($dbName);
     $database->command(['ping' => 1]);
-
 
 
 } catch (Exception $e) {
