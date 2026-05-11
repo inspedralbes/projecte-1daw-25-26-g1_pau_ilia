@@ -94,9 +94,11 @@ http://g1.daw.inspedralbes.cat/
 
 **Diagrama de casos d'us:**
 
+![Diagrama de casos d'us](./Diagrama-de-casos-d'us.drawio.png)
 
 **Diagrama del model E-R:**
 
+![Diagrama del model E-R](./Disseny-del-model-E-R.drawio.png)
 
 **Wireframe:**
 
