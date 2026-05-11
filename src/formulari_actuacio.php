@@ -50,7 +50,7 @@ include_once "header.php";
 
                         <div class="mb-4">
                             <label for="descripcion" class="form-label fw-bold">Descripció</label>
-                            <textarea placeholder="Añade una descripción..." class="form-control placeholder-primary bg-light" name="descripcion" id="descripcion" rows="3" required></textarea>
+                            <textarea placeholder="Añade una descripción..." class="form-control placeholder-primary bg-light" name="descripcion" id="descripcion" rows="3" required minlength="20"></textarea>
                         </div>
 
                         <div class="mb-3">
