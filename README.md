@@ -84,6 +84,26 @@ L'aplicació estarà disponible a http://localhost:8080
 
 ---
 
+## Pàgina Final
+
+http://g1.daw.inspedralbes.cat/
+
+---
+
+## Diagramas i Wireframe
+
+**Diagrama de casos d'us:**
+
+
+**Diagrama del model E-R:**
+
+
+**Wireframe:**
+
+https://www.figma.com/proto/HWrIN28FzKiSmQZHQrCmG1/Untitled?node-id=1-1021&p=f&t=D2YmmamacXPsax3N-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A1021
+
+---
+
 ## Pàgines amb validació WCAG AA
 
 - formulari_incidencia.php
