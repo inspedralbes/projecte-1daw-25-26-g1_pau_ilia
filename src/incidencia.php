@@ -22,6 +22,11 @@ $sentencia_historial->bind_param("i", $id);
 $sentencia_historial->execute();
 $historial = $sentencia_historial->get_result();
 
+$sentencia_dep = $mysqli->prepare("SELECT nom FROM departaments WHERE id  = ?");
+$sentencia_dep -> bind_param("i", $incidencia["departament_id"]);
+$sentencia_dep -> execute();
+$resultado_dep = $sentencia_dep->get_result();
+$dep = $resultado_dep->fetch_assoc();
 include_once "header.php"; 
 ?>
 
@@ -112,11 +117,15 @@ include_once "header.php";
                                         <h4><strong>Data de Finalització</strong></h4>
                                         <p class="medium"><?php echo $incidencia["data_finalitzacio"] ?? "Aquesta incidencia esta en proceso"?></p>
                                     </div>
-                            </div>                
-                            <h4><strong>Ultima actualització</strong></h4>
-                            <p class="medium"><?php echo $incidencia["ultima_actuacio_data"] ?? "Sense actualitzacions"; ?></p>
-
-                            <div class="mt-4 d-flex gap-2">
+                            </div>              
+                            <div class="row">
+                                <div class="col-6">
+                                    <h4><strong>Ultima actualització</strong></h4>
+                                    <p class="medium"><?php echo $incidencia["ultima_actuacio_data"] ?? "Sense actualitzacions"; ?></p>
+                                </div> <div class="col-6">
+                                    <h4><strong>Departament</strong></h4>
+                                    <p class="medium"><?php echo $dep["nom"]?></p>
+                                </div> </div> <div class="mt-4 d-flex gap-2">
                                 <button type="submit" class="btn btn-success flex-grow-1">Guardar Canvis</button>
                                 <a href="/formulari_actuacio.php?id=<?php echo $incidencia["id"]?>" class="btn btn-primary flex-grow-1">Afegir Actuació</a>
                             </div>
