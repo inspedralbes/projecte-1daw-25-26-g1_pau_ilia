@@ -35,7 +35,7 @@ Aquest projecte és una aplicació web modular dissenyada per centralitzar i ges
 - **Estils:** Bootstrap 5.3 amb el tema Slate de Bootswatch + Bootstrap Icons.
 - **Llibreries PHP:** PHPMailer (correu SMTP), MongoDB PHP Library.
 - **Gestió de dependències:** Composer.
-- **Seguretat:** Consultes preparades (prepared statements) per evitar injeccions SQL. Credencials protegides via fitxer `.env`.
+- **Seguretat:** Consultes preparades (prepared statements) per evitar injeccions SQL. Credencials protegides via fitxer .env
 
 ---
 
@@ -56,6 +56,7 @@ Aquest projecte és una aplicació web modular dissenyada per centralitzar i ges
 **1. Clonar el repositori:**
 
 git clone https://github.com/inspedralbes/projecte-1daw-25-26-g1_pau_ilia.git
+
 cd projecte-1daw-25-26-g1_pau_ilia
 
 **2. Configurar l'entorn:**
@@ -79,7 +80,7 @@ composer install
 docker-compose up -d
 
 
-L'aplicació estarà disponible a http://localhost:8080.
+L'aplicació estarà disponible a http://localhost:8080
 
 ---
 
