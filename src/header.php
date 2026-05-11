@@ -26,6 +26,8 @@
             padding: 0.8rem 1rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             font-family: sans-serif;
+            margin-bottom: .7rem;
+
         }
 
         .nav-container {
