@@ -14,87 +14,179 @@
     <link rel="stylesheet" href="../css/style.css">
 
     <style>
-        .navbar-brand { font-weight: bold; letter-spacing: 1px; }
-
-        .navbar-toggler:focus,
-        .navbar-toggler:focus-visible {
-            outline: 3px solid #fff;
-            outline-offset: 2px;
-            box-shadow: 0 0 0 3px rgba(255,255,255,.35);
+        :root {
+            --primary-bg: #45494e; 
+            --accent-color: #f0ad4e; 
+            --text-white: #ffffff;
+            --transition: all 0.3s ease;
         }
 
-        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath fill-rule='evenodd' d='M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z'/%3e%3cpath fill-rule='evenodd' d='M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z'/%3e%3c/svg%3e");
+        .custom-navbar {
+            background-color: var(--primary-bg);
+            padding: 0.8rem 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-family: sans-serif;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            gap: 10px;
+        }
+
+        .nav-logo img { height: 40px; }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 20px;
+            margin: 0;
+        }
+
+        .nav-link {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover { color: white; }
+        .highlight { color: var(--accent-color) !important; }
+
+        .btn-add {
+            background: white;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .btn-add:hover { background: #ddd; }
+
+        .search-container { display: flex; align-items: center; }
+        .search-input {
+            width: 0;
+            opacity: 0;
+            transition: var(--transition);
+            border: none;
+            border-radius: 4px;
+            outline: none;
+        }
+        .search-input.active {
+            width: 100px;
+            opacity: 1;
+            padding: 5px;
+            margin-right: 5px;
+        }
+        .btn-search { background: transparent; border: none; cursor: pointer; font-size: 1.2rem; }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; background: none; border: none; }
+        .bar { height: 3px; width: 25px; background-color: white; margin: 4px 0; border-radius: 2px; }
+
+        @media (max-width: 992px) {
+            .menu-toggle { display: flex; }
+
+            .nav-menu {
+                position: absolute;
+                top: -100%;
+                left: 0;
+                flex-direction: column;
+                background-color: var(--primary-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.4s;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.2);
+                z-index: 100;
+                filter: brightness(100%);
+            }
+
+            .nav-menu.active { top: 65px;
+                filter: brightness(90%);
+                }
+            .nav-item { margin: 15px 0; }
         }
         
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm mb-4 py-2 px-md-0 px-4" aria-label="Navegació principal">
-        <div class="container">
-            <a class="navbar-brand text-light" href="index.php">
-                <img src="/img/logo_institut.png" alt="Logo" width="40" height="40">
-                Institut Pedralbes
-            </a>
+    <nav class="custom-navbar">
+    <div class="nav-container">
+        <a href="index.php" class="nav-logo">
+            <img src="/img/logo_institut.png" alt="Logo">
+            <span>Institut Pedralbes</span>
+        </a>
+
+        <button class="menu-toggle" id="mobile-menu" aria-label="Obrir menú">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <ul class="nav-menu" id="nav-menu">
+            <li class="nav-item search-container">
+                <input type="number" id="incidenciaId" placeholder="ID..." class="search-input">
+                <button type="button" onclick="gestionarBusqueda()" class="btn-search" aria-label="Cercar">
+                    <i class="bi bi-search text-light"></i>
+                </button>
+            </li>
             
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar menú de navegació">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <li class="nav-item">
+                <a href="tecnics.php" class="nav-link">
+                    <i class="bi bi-tools"></i> Tècnics
+                </a>
+            </li>
             
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center gap-3 py-3 py-lg-0">
-                    
-                    <li class="nav-item d-flex align-items-center">
-                        <label for="incidenciaId" class="visually-hidden">Cercar incidència per ID</label>
-                        <input type="number" id="incidenciaId" class="form-control form-control-sm me-2" 
-                            placeholder="ID..." 
-                            style="width: 0; opacity: 0; transition: all 0.4s ease; padding: 0; border: none; overflow: hidden;"
-                            aria-hidden="true">
-                        
-                        <button type="button" onclick="gestionarBusqueda()" id="btnBusqueda" 
-                                class="btn btn-secondary rounded-circle text-light p-0 d-flex align-items-center justify-content-center" 
-                                style="width: 38px; height: 38px; border: none;"
-                                aria-label="Obrir cercador">
-                            <i class="bi bi-search" aria-hidden="true"></i>
-                        </button>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-light d-flex align-items-center" href="tecnics.php">
-                            <i class="bi bi-tools me-2" aria-hidden="true"></i> Tècnics
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-light d-flex align-items-center" href="dashboard.php">
-                            <i class="bi bi-speedometer2 me-2" aria-hidden="true"></i> Panel
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-light d-flex align-items-center" href="departamentos.php">
-                            <i class="bi bi-building-fill me-2" aria-hidden="true"></i> Departaments
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-warning d-flex align-items-center" href="todas_incidencias.php">
-                            <i class="bi bi-exclamation-triangle-fill me-2" aria-hidden="true"></i> Incidències
-                        </a>
-                    </li>
-
-                    <li class="nav-item mt-2 mt-lg-0">
-                        <a class="btn btn-light rounded-pill btn-sm text-black px-3 py-2 d-flex align-items-center" href="formulari_incidencia.php">
-                            <i class="bi bi-plus-circle me-2" aria-hidden="true"></i> Afegir Incidència
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+            <li class="nav-item">
+                <a href="dashboard.php" class="nav-link">
+                    <i class="bi bi-speedometer2"></i> Panel
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="departamentos.php" class="nav-link">
+                    <i class="bi bi-building-fill"></i> Departaments
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="todas_incidencias.php" class="nav-link highlight">
+                    <i class="bi bi-exclamation-triangle-fill"></i> Incidències
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="formulari_incidencia.php" class="btn-add">
+                    <i class="bi bi-plus-circle"></i> Afegir Incidència
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+
+        const menuToggle = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
         function gestionarBusqueda() {
             const input = document.getElementById('incidenciaId');
             const id = input.value;
@@ -135,6 +227,8 @@
                 });
             }
         });
+
+        
         
     </script>
 </body>
