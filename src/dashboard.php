@@ -2,7 +2,10 @@
 require_once 'logger.php'; 
 include_once "header.php";
 
-$pipelineTotal = [['$count' => 'total']];
+$pipelineTotal = [
+    ['$count' => 'total']
+    
+];
 $resTotal = $coleccionLogs->aggregate($pipelineTotal)->toArray();
 $total_vis = !empty($resTotal) ? $resTotal[0]['total'] : 0;
 

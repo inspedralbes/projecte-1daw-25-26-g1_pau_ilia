@@ -20,7 +20,7 @@ function enviarEmailIncidencia($id, $mysqli) {
         $mail->SMTPDebug = SMTP::DEBUG_SERVER; 
 
         $mail->isSMTP();                                          
-        $mail->Host       = 'mail.g1.daw.inspedralbes.cat';  // Fixed hostname from screenshot
+        $mail->Host       = 'mail.g1.daw.inspedralbes.cat';  
         $mail->SMTPAuth   = true;                                   
         $mail->Username   = 'admin@g1.daw.inspedralbes.cat';              
         $mail->Password   = 'Admin1234.';                        
