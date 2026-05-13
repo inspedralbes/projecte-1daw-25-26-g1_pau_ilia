@@ -58,6 +58,12 @@ include_once "header.php";
                             <input placeholder="Ej. 20min" class="form-control placeholder-primary bg-light" type="text" name="temp" id="temp">
                         </div>
 
+                        <div class="form-check form-switch mb-4">
+                            <input type="hidden" name="visible_usuari" value="No">
+                            <input class="form-check-input" type="checkbox" name="visible_usuari" id="visible_usuari" value="Si">
+                            <label class="form-check-label fw-bold" for="visible_usuari">Visible per l'usuari</label>
+                        </div>
+
                         <div class="row col-md-12">
                             <div class="mb-2 col-6">
                                 <button type="submit" name="accion" value="registrar" class="btn btn-primary w-100">
