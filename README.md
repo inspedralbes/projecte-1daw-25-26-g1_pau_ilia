@@ -6,13 +6,13 @@ Aquest projecte és una aplicació web modular dissenyada per centralitzar i ges
 
 ## Funcionalitats Principals
 
-### Per a Usuaris
+### Per a Usuaris:
 
 - **Registre de tiquets:** Formulari simplificat per enviar incidències indicant el títol, el departament, la data i la descripció del problema.
 - **Comprovació de tiquets:** Pantalla de confirmació amb la generació d'un ID únic i resum de la petició.
 - **Visualització de l'historial:** Possibilitat de veure les actuacions que els tècnics han marcat com a visibles.
 
-### Per a Tècnics i Administradors
+### Per a Tècnics i Administradors:
 
 - **Tauler de control (Dashboard):** Estadístiques d'accessos amb gràfic de tendències per dia, top pàgines visitades i log dels últims 10 accessos. Les dades provenen de MongoDB.
 - **Gestió de tiquets:** Llistat interactiu per assignar prioritat, tipologia d'incidència i tècnic responsable mitjançant finestres modals. Ordenació per prioritat o data.
@@ -71,6 +71,7 @@ MONGODB_INITDB_ROOT_USERNAME=user
 MONGODB_INITDB_ROOT_PASSWORD=pass
 
 **3. Instal·lar dependències PHP:**
+
 cd src
 composer install
 
@@ -86,7 +87,7 @@ L'aplicació estarà disponible a http://localhost:8080
 
 ## Pàgina Final
 
-http://g1.daw.inspedralbes.cat/
+http://g1.daw.inspedralbes.cat
 
 ---
 
