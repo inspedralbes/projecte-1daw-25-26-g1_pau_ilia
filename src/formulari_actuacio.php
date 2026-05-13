@@ -64,17 +64,16 @@ include_once "header.php";
                             <input class="form-check-input" type="checkbox" name="visible_usuari" id="visible_usuari" value="Si">
                             <label class="form-check-label fw-bold" for="visible_usuari">Visible per l'usuari</label>
                         </div>
-
                         <div class="row col-md-12">
                             <div class="mb-2 col-6">
-                                <button type="submit" class="btn btn-primary w-100">
+                                <button type="submit" name="accion" value="registrar" class="btn btn-primary w-100">
                                     <i class="bi bi-save me-2"></i>Registrar Actuació
                                 </button>
                             </div>
                             <div class="mb-2 col-6">
-                                <a href="cerrar_incidencia.php?id=<?php echo $id?>" class="btn btn-secondary w-100">
-                                    <i class="bi bi-x me-2 fs-6"></i>Tancar Incidència
-                                </a>
+                                <button type="submit" name="accion" value="cerrar" class="btn btn-secondary w-100">
+                                    <i class="bi bi-check-circle me-2"></i>Tancar Incidència
+                                </button>
                             </div>
                         </div>
                     </form>
