@@ -37,7 +37,7 @@ function enviarEmailIncidencia($id, $mysqli) {
         );
 
         $mail->setFrom('admin@g1.daw.inspedralbes.cat', 'Sistema de Logs');
-        $mail->addAddress('a22iliakiaki@inspedralbes.cat'); 
+        $mail->addAddress('a23pauvilsor@inspedralbes.cat'); 
 
         $mail->isHTML(true);                                  
         $mail->Subject = 'Nova Incidència: ' . $incidencia['title'];
