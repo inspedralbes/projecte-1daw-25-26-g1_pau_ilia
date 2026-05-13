@@ -45,25 +45,19 @@ include_once "header.php";
             <div class="row">
                 <div class="col-12 col-md-8 offset-md-2">
                     <h1 class="mb-4">Registrar Actuació</h1>
-                    <form action="insertar_actuacio.php" method="POST" class="card p-4 shadow-sm">
+                    <form action="insertar_actuacio.php" method="POST" id="formActuacion" class="card p-4 shadow-sm">
                         <input type="hidden" name="id_incidencia" value="<?php echo htmlspecialchars($id); ?>">
 
                         <div class="mb-4">
                             <label for="descripcion" class="form-label fw-bold">Descripció</label>
-                            <textarea placeholder="Añade una descripción..." class="form-control placeholder-primary bg-light" name="descripcion" id="descripcion" rows="3" required minlength="20"></textarea>
+                            <textarea placeholder="Añade una descripción..." class="form-control placeholder-primary bg-light" name="descripcion" id="descripcion" rows="3"></textarea>
                         </div>
 
                         <div class="mb-3">
                             <label for="temp" class="form-label fw-bold">Temps invertit</label>
-                            <input placeholder="Ej. 20min" class="form-control placeholder-primary bg-light" type="text" name="temp" id="temp" required>
+                            <input placeholder="Ej. 20min" class="form-control placeholder-primary bg-light" type="text" name="temp" id="temp">
                         </div>
 
-                        <div class="form-check form-switch mb-4">
-                            <input type="hidden" name="visible_usuari" value="No">
-                            
-                            <input class="form-check-input" type="checkbox" name="visible_usuari" id="visible_usuari" value="Si">
-                            <label class="form-check-label fw-bold" for="visible_usuari">Visible per l'usuari</label>
-                        </div>
                         <div class="row col-md-12">
                             <div class="mb-2 col-6">
                                 <button type="submit" name="accion" value="registrar" class="btn btn-primary w-100">
@@ -84,26 +78,31 @@ include_once "header.php";
 </html>
 
 <script>
-    const form = document.querySelector('form');
-    
-    if (form) {
+    const form = document.getElementById('formActuacion');
+    let botonPulsado = "";
+        form.querySelectorAll('button[type="submit"]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                botonPulsado = e.currentTarget.value;
+            });
+        });
+
         form.addEventListener('submit', function(e) {
-            const descripcion = document.getElementById('descripcion').value;
-            const temps = document.getElementById('temp').value;
+            if (botonPulsado === "registrar") {
+                const descripcion = document.getElementById('descripcion').value.trim();
+                const temps = document.getElementById('temp').value.trim();
 
-            if (descripcion.trim().length < 15) {
-                e.preventDefault();
-                alert("La descripción debe tener al menos 15 caracteres.");
-                return;
-            }
-
-            if (!/\d/.test(temps)) {
-                e.preventDefault();
-                alert("El tiempo debe incluir números.");
-                return;
+                if (descripcion.length < 15) {
+                    e.preventDefault();
+                    alert("Para registrar una actuación, la descripción debe tener al menos 15 caracteres.");
+                    return;
+                }
+                if (!/\d/.test(temps)) {
+                    e.preventDefault();
+                    alert("Debe indicar el tiempo invertido.");
+                    return;
+                }
             }
         });
-    }
 </script>
 
 <?php include_once "footer.php"; ?>
